@@ -123,15 +123,16 @@
 </section>
 
 <section id="chatbot">
-    <h2>Asistente Virtual con IA</h2>
+    <h2>Asistente Virtual Institucional</h2>
     <div class="chatbot-box">
-        <p>Próximamente integrado con Inteligencia Artificial.</p>
-        <button onclick="alert('Aquí se integrará el chatbot con IA')">
-            Iniciar Asistente
-        </button>
+        
+        <div id="messages" style="height:200px; overflow-y:auto; text-align:left; background:white; padding:10px; border-radius:5px; margin-bottom:10px;"></div>
+        
+        <input type="text" id="userInput" placeholder="Escribe tu consulta..." style="width:70%; padding:8px;">
+        <button onclick="responder()">Enviar</button>
+
     </div>
 </section>
-
 <section id="contacto">
     <h2>Contacto</h2>
     <div class="card">
@@ -140,14 +141,46 @@
         <p>Dirección: San Jacinto, Chiquimula</p>                       
     </div>
 </section>
-<section id="Realizado por">
-        <h2>Realizado por:</h2>
-        <p>Franklin Omar Martínez Pérez</p>
-        <p>Annlly Miriam Janeth Cruz Díaz</p>
-          </div>
+<section id="realizado">
+    <h2>Realizado por:</h2>
+    <p>Franklin Omar Martínez Pérez</p>
+    <p>Annlly Miriam Janeth Cruz Díaz</p>
+</section>
+
 <footer>
     <p>© 2026 Coordinación Distrital 20-011 | Sistema Digital Inteligente</p>
 </footer>
+<script>
+function responder() {
+    let input = document.getElementById("userInput").value.toLowerCase();
+    let mensajes = document.getElementById("messages");
+
+    mensajes.innerHTML += "<p><b>Tú:</b> " + input + "</p>";
+
+    let respuesta = "Lo siento, no tengo información sobre eso.";
+
+    if (input.includes("mision")) {
+        respuesta = "La misión de la Coordinación Distrital es garantizar la gestión administrativa eficiente y el cumplimiento de los lineamientos institucionales.";
+    }
+
+    else if (input.includes("vision")) {
+        respuesta = "La visión es consolidarse como una unidad administrativa eficiente, transparente y orientada al servicio.";
+    }
+
+    else if (input.includes("oficio")) {
+        respuesta = "Modelo de oficio:\n\nPor medio de la presente me permito saludarle cordialmente y a la vez solicitar...";
+    }
+
+    else if (input.includes("horario")) {
+        respuesta = "El horario de atención es de lunes a viernes de 8:00 AM a 4:00 PM.";
+    }
+
+    mensajes.innerHTML += "<p><b>Asistente:</b> " + respuesta + "</p>";
+    document.getElementById("userInput").value = "";
+}
+</script>
 
 </body>
 </html>
+
+
