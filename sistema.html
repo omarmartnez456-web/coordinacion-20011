@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sistema Digital Inteligente</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f9;
+}
+
+header {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    padding: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #1e3a8a;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Sistema Digital Inteligente</h1>
+    <p>Coordinación Distrital 20-011</p>
+</header>
+
+<section>
+    <h2>Documentos Oficiales</h2>
+    <div class="card">
+        <ul>
+            <li><a href="#">Reglamento Interno</a></li>
+            <li><a href="#">Modelo de Acta</a></li>
+            <li><a href="#">Circular Informativa</a></li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Asistente Virtual Institucional</h2>
+    <div class="card">
+
+        <div id="messages" style="height:200px; overflow-y:auto; background:#f1f5f9; padding:10px; border-radius:5px;"></div>
+        <input type="text" id="userInput" placeholder="Escribe tu consulta..." style="width:70%; padding:8px;">
+        <button onclick="responder()">Enviar</button>
+
+    </div>
+</section>
+
+<script>
+function responder() {
+    let input = document.getElementById("userInput").value.toLowerCase();
+    let mensajes = document.getElementById("messages");
+
+    mensajes.innerHTML += "<p><b>Tú:</b> " + input + "</p>";
+
+    let respuesta = "No tengo información sobre eso.";
+
+    if (input.includes("mision")) {
+        respuesta = "La misión institucional es garantizar la gestión administrativa eficiente.";
+    }
+    else if (input.includes("vision")) {
+        respuesta = "La visión es consolidarse como una unidad administrativa eficiente y transparente.";
+    }
+    else if (input.includes("oficio")) {
+        respuesta = "Modelo de oficio:\n\nPor medio de la presente me permito saludarle cordialmente...";
+    }
+    else if (input.includes("horario")) {
+        respuesta = "El horario de atención es de lunes a viernes de 8:00 AM a 4:00 PM.";
+    }
+
+    mensajes.innerHTML += "<p><b>Asistente:</b> " + respuesta + "</p>";
+    document.getElementById("userInput").value = "";
+}
+</script>
+
+</body>
+</html>
