@@ -301,6 +301,7 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 
 </section>
 <head>
+
 <style>
 
 /* CONTACTO */
@@ -325,9 +326,27 @@ transition:0.3s;
 transform:translateY(-5px);
 }
 
-<style>
+/* AUTORES */
 
-<section id="contacto">
+.autores-container{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.autor-card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.autor-card:hover{
+transform:translateY(-5px);
+}
+  <section id="contacto">
 
 <h2 class="titulo-contacto">Contacto</h2>
 
@@ -351,35 +370,8 @@ transform:translateY(-5px);
 </div>
 
 </section>
-  <head>
 
-<style>
-/* AUTORES */
 
-.autores-container{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-}
-
-.autor-card{
-background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.autor-card:hover{
-transform:translateY(-5px);
-}
-
-</style>
-</head>
-</style>
-
-</head>
 <section id="autores">
 
 <h2 class="titulo-autores">Realizado por</h2>
@@ -398,6 +390,11 @@ transform:translateY(-5px);
 
 </div>
 
+</section>
+
+</style>
+
+</head>
 </section>
 
 <footer>
@@ -449,6 +446,7 @@ document.getElementById("userInput").value="";
 
 </body>
 </html>
+
 
 
 
