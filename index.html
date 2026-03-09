@@ -373,7 +373,7 @@ async function responder(){
 let input = document.getElementById("userInput").value;
 let mensajes = document.getElementById("messages");
 
-mensajes.innerHTML += "<p><b>Tú:</b> " + input + "</p>";
+mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
 
 document.getElementById("userInput").value="";
 
@@ -386,12 +386,8 @@ headers:{
 "Content-Type":"application/json"
 },
 body:JSON.stringify({
-model:"openai/gpt-4.1-mini",
+model:"openai/gpt-3.5-turbo",
 messages:[
-{
-role:"system",
-content:"Eres el asistente virtual de la Coordinación Distrital 20-011 en San Jacinto Chiquimula. Ayudas con información educativa, documentos administrativos, oficios y actas."
-},
 {
 role:"user",
 content:input
@@ -404,7 +400,7 @@ let data = await respuesta.json();
 
 let mensajeIA = data.choices[0].message.content;
 
-mensajes.innerHTML += "<p><b>Asistente:</b> " + mensajeIA + "</p>";
+mensajes.innerHTML += "<p><b>Asistente:</b> "+mensajeIA+"</p>";
 
 }
 catch(error){
@@ -429,6 +425,7 @@ chat.style.display="none";
 
 </script>
 ```
+
 
 
 
