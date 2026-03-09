@@ -302,9 +302,15 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 </section>
 <head>
 
+```html id="ctfqcs"
 <style>
 
 /* CONTACTO */
+
+#contacto{
+text-align:center;
+padding:60px 20px;
+}
 
 .contacto-container{
 display:flex;
@@ -315,18 +321,33 @@ flex-wrap:wrap;
 
 .contacto-card{
 background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-width:220px;
+padding:30px;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.1);
+width:230px;
 transition:0.3s;
 }
 
 .contacto-card:hover{
-transform:translateY(-5px);
+transform:translateY(-8px);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.contacto-card h3{
+color:#2563eb;
+margin-bottom:10px;
+}
+
+.contacto-card p{
+color:#555;
 }
 
 /* AUTORES */
+
+#autores{
+text-align:center;
+padding:60px 20px;
+}
 
 .autores-container{
 display:flex;
@@ -337,18 +358,34 @@ flex-wrap:wrap;
 
 .autor-card{
 background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+padding:30px;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.1);
+width:260px;
 transition:0.3s;
 }
 
 .autor-card:hover{
-transform:translateY(-5px);
+transform:translateY(-8px);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
-  <section id="contacto">
 
-<h2 class="titulo-contacto">Contacto</h2>
+.autor-card h3{
+color:#1e3a8a;
+margin-bottom:10px;
+}
+
+.autor-card p{
+color:#555;
+font-size:14px;
+}
+
+</style>
+
+
+<section id="contacto">
+
+<h2>Contacto</h2>
 
 <div class="contacto-container">
 
@@ -374,7 +411,7 @@ transform:translateY(-5px);
 
 <section id="autores">
 
-<h2 class="titulo-autores">Realizado por</h2>
+<h2>Realizado por</h2>
 
 <div class="autores-container">
 
@@ -391,8 +428,6 @@ transform:translateY(-5px);
 </div>
 
 </section>
-
-</style>
 
 </head>
 </section>
@@ -446,6 +481,7 @@ document.getElementById("userInput").value="";
 
 </body>
 </html>
+
 
 
 
