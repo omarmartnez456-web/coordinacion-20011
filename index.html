@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -65,6 +65,10 @@ section{
 padding:60px;
 }
 
+h2{
+color:#1e3a8a;
+}
+
 /* TARJETAS */
 
 .card{
@@ -73,171 +77,6 @@ padding:25px;
 margin:25px 0;
 border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-/* TITULOS */
-
-h2{
-color:#1e3a8a;
-}
-
-/* CHATBOT */
-
-.chatbot-box{
-background:#e0f2fe;
-padding:25px;
-border-radius:10px;
-}
-
-#messages{
-height:220px;
-overflow-y:auto;
-background:white;
-padding:10px;
-border-radius:6px;
-margin-bottom:10px;
-}
-
-/* BOTONES */
-
-button{
-padding:10px 20px;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-button:hover{
-background:#1e40af;
-}
-
-/* BOTON FLOTANTE */
-
-.chat-float{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#2563eb;
-color:white;
-padding:15px 20px;
-border-radius:50px;
-cursor:pointer;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* FOOTER */
-
-footer{
-background:#1e3a8a;
-color:white;
-text-align:center;
-padding:15px;
-margin-top:40px;
-}
-
-/* RESPONSIVE PARA TELEFONO */
-
-@media (max-width:768px){
-
-header h1{
-font-size:28px;
-}
-
-header p{
-font-size:16px;
-}
-
-section{
-padding:30px 15px;
-}
-
-nav{
-flex-direction:column;
-align-items:center;
-}
-
-nav a{
-display:block;
-margin:10px;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-<h1>Coordinación Distrital 20-011</h1>
-<p>San Jacinto, Chiquimula</p>
-</header>
-
-<nav>
-<a href="#inicio">Inicio</a>
-<a href="#nosotros">Nosotros</a>
-<a href="#documentos">Documentos</a>
-<a href="#chatbot">Asistente IA</a>
-<a href="#contacto">Contacto</a>
-</nav>
-
-<section id="inicio">
-
-<h2>Bienvenidos</h2>
-
-<div class="card">
-
-<p>
-Bienvenido al Sistema Digital Inteligente de Gestión Administrativa de la Coordinación Distrital 20-011.
-Esta plataforma facilita el acceso a información oficial, documentos institucionales y asistencia automatizada mediante Inteligencia Artificial.
-</p>
-
-</div>
-
-</section>
-
-<section id="nosotros">
-
-<h2>Información Institucional</h2>
-
-<div class="card">
-
-<p><b>Misión:</b> Somos una institución evolutiva, organizada, eficiente y eficaz que genera oportunidades educativas con pertinencia cultural.</p>
-
-<p><b>Visión:</b> Contar con centros educativos de calidad formando ciudadanos con valores y capacidades para su desarrollo integral.</p>
-
-<p><b>Objetivo:</b> Modernizar la gestión administrativa mediante herramientas digitales.</p>
-
-</div>
-
-</section>
-
-<section id="documentos">
-
-<h2>Documentos Oficiales</h2>
-
-<div class="card">
-
-<ul>
-<li>Reglamento Interno</li>
-<li>Modelo de Acta</li>
-<li>Circular Informativa</li>
-<li>Formato de Oficio</li>
-</ul>
-
-</div>
-
-<style>
-
-body{
-font-family:'Segoe UI',sans-serif;
 }
 
 /* CHATBOT */
@@ -277,25 +116,16 @@ color:white;
 padding:10px;
 }
 
-</style>
-<head>
-
-<style>
-
-body{
-font-family:'Segoe UI',sans-serif;
+#messages{
+height:200px;
+overflow-y:auto;
+padding:10px;
 }
 
-/* SECCIÓN CONTACTO */
+/* CONTACTO */
 
 #contacto{
 text-align:center;
-padding:60px 20px;
-}
-
-.titulo-contacto{
-color:#1e3a8a;
-margin-bottom:40px;
 }
 
 .contacto-container{
@@ -311,64 +141,16 @@ padding:25px 30px;
 border-radius:10px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 width:220px;
-transition:0.3s;
-}
-
-.contacto-card:hover{
-transform:translateY(-5px);
 }
 
 .contacto-card h3{
-margin-bottom:10px;
 color:#2563eb;
 }
 
-.contacto-card p{
-color:#555;
-}
-
-</style>
-
-</head>
-</section>
-
-<section id="contacto">
-
-<h2 class="titulo-contacto">Contacto</h2>
-
-<div class="contacto-container">
-
-<div class="contacto-card">
-<h3>📧 Email</h3>
-<p>omarmartnez456@gmail.com</p>
-</div>
-
-<div class="contacto-card">
-<h3>📞 Teléfono</h3>
-<p>5728-6135</p>
-</div>
-
-<div class="contacto-card">
-<h3>📍 Dirección</h3>
-<p>San Jacinto, Chiquimula, Guatemala</p>
-</div>
-
-</div>
-
-</section>
-
-<style>
-
-/* SECCIÓN AUTORES */
+/* AUTORES */
 
 #autores{
 text-align:center;
-padding:60px 20px;
-}
-
-.titulo-autores{
-color:#1e3a8a;
-margin-bottom:40px;
 }
 
 .autores-container{
@@ -383,27 +165,136 @@ background:white;
 padding:25px 35px;
 border-radius:10px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.autor-card:hover{
-transform:translateY(-5px);
 }
 
 .autor-card h3{
-margin:0;
 color:#1e3a8a;
 }
 
-.autor-card p{
-margin-top:8px;
-color:#555;
-font-size:14px;
+/* FOOTER */
+
+footer{
+background:#1e3a8a;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:40px;
 }
+
+/* RESPONSIVE */
+
+@media (max-width:768px){
+
+header h1{
+font-size:28px;
+}
+
+section{
+padding:30px 15px;
+}
+
+nav{
+flex-direction:column;
+align-items:center;
+}
+
+nav a{
+display:block;
+margin:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Coordinación Distrital 20-011</h1>
+<p>San Jacinto, Chiquimula</p>
+</header>
+
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#documentos">Documentos</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<section id="inicio">
+<h2>Bienvenidos</h2>
+
+<div class="card">
+<p>
+Bienvenido al Sistema Digital Inteligente de Gestión Administrativa de la Coordinación Distrital 20-011.
+Esta plataforma facilita el acceso a información oficial, documentos institucionales y asistencia automatizada mediante Inteligencia Artificial.
+</p>
+</div>
+
+</section>
+
+<section id="nosotros">
+
+<h2>Información Institucional</h2>
+
+<div class="card">
+
+<p><b>Misión:</b> Somos una institución evolutiva, organizada, eficiente y eficaz que genera oportunidades educativas.</p>
+
+<p><b>Visión:</b> Contar con centros educativos de calidad formando ciudadanos con valores.</p>
+
+<p><b>Objetivo:</b> Modernizar la gestión administrativa mediante herramientas digitales.</p>
+
+</div>
+
+</section>
+
+<section id="documentos">
+
+<h2>Documentos Oficiales</h2>
+
+<div class="card">
+
+<ul>
+<li>Reglamento Interno</li>
+<li>Modelo de Acta</li>
+<li>Circular Informativa</li>
+<li>Formato de Oficio</li>
+</ul>
+
+</div>
+
+</section>
+
+<section id="contacto">
+
+<h2>Contacto</h2>
+
+<div class="contacto-container">
+
+<div class="contacto-card">
+<h3>Email</h3>
+<p>omarmartnez456@gmail.com</p>
+</div>
+
+<div class="contacto-card">
+<h3>Teléfono</h3>
+<p>5728-6135</p>
+</div>
+
+<div class="contacto-card">
+<h3>Dirección</h3>
+<p>San Jacinto, Chiquimula, Guatemala</p>
+</div>
+
+</div>
+
+</section>
 
 <section id="autores">
 
-<h2 class="titulo-autores">Realizado por</h2>
+<h2>Realizado por</h2>
 
 <div class="autores-container">
 
@@ -422,13 +313,22 @@ font-size:14px;
 </section>
 
 <footer>
-
 © 2026 Coordinación Distrital 20-011 | Sistema Digital Inteligente
-
 </footer>
 
-<div class="chat-float" onclick="document.getElementById('chatbot').scrollIntoView({behavior:'smooth'});">
+<div class="chatbot">
+
+<div class="chat-header">
 Asistente IA
+</div>
+
+<div id="messages"></div>
+
+<div class="chat-input">
+<input id="userInput" placeholder="Escribe tu consulta...">
+<button onclick="responder()">Enviar</button>
+</div>
+
 </div>
 
 <script>
@@ -443,19 +343,13 @@ mensajes.innerHTML+="<p><b>Tú:</b> "+input+"</p>";
 let respuesta="Lo siento, no tengo información sobre eso.";
 
 if(input.includes("mision"))
-respuesta="La misión es garantizar una gestión educativa eficiente y acompañamiento pedagógico.";
+respuesta="La misión es garantizar una gestión educativa eficiente.";
 
 else if(input.includes("vision"))
-respuesta="La visión es fortalecer los centros educativos mediante procesos administrativos y pedagógicos eficientes.";
-
-else if(input.includes("oficio"))
-respuesta="Modelo de oficio: Por medio de la presente me permito saludarle cordialmente...";
-
-else if(input.includes("acta"))
-respuesta="Un acta debe contener: lugar, fecha, participantes, acuerdos y firmas.";
+respuesta="La visión es fortalecer los centros educativos.";
 
 else if(input.includes("horario"))
-respuesta="El horario de atención es de lunes a viernes de 8:00 AM a 4:00 PM.";
+respuesta="El horario es de lunes a viernes de 8:00 AM a 4:00 PM.";
 
 mensajes.innerHTML+="<p><b>Asistente:</b> "+respuesta+"</p>";
 
@@ -467,10 +361,6 @@ document.getElementById("userInput").value="";
 
 </body>
 </html>
-```
-
-
-
 
 
 
