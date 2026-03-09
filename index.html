@@ -341,7 +341,7 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 <footer>
 © 2026 Coordinación Distrital 20-011 | Sistema Digital Inteligente
 </footer>
-
+  
 <!-- CHATBOT -->
 
 <div class="chatbot" id="chatbot">
@@ -368,33 +368,56 @@ Asistente IA
 
 <script>
 
-function responder(){
+async function responder(){
 
-let input=document.getElementById("userInput").value.toLowerCase();
-let mensajes=document.getElementById("messages");
+let input = document.getElementById("userInput").value;
+let mensajes = document.getElementById("messages");
 
-mensajes.innerHTML+="<p><b>Tú:</b> "+input+"</p>";
-
-let respuesta="Lo siento, no tengo información sobre eso.";
-
-if(input.includes("mision"))
-respuesta="La misión es garantizar una gestión educativa eficiente.";
-
-else if(input.includes("vision"))
-respuesta="La visión es fortalecer los centros educativos.";
-
-else if(input.includes("horario"))
-respuesta="El horario es de lunes a viernes de 8:00 AM a 4:00 PM.";
-
-mensajes.innerHTML+="<p><b>Asistente:</b> "+respuesta+"</p>";
+mensajes.innerHTML += "<p><b>Tú:</b> " + input + "</p>";
 
 document.getElementById("userInput").value="";
+
+try{
+
+let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
+method:"POST",
+headers:{
+"Authorization":"Bearer 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",
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+model:"openai/gpt-4.1-mini",
+messages:[
+{
+role:"system",
+content:"Eres el asistente virtual de la Coordinación Distrital 20-011 en San Jacinto Chiquimula. Ayudas con información educativa, documentos administrativos, oficios y actas."
+},
+{
+role:"user",
+content:input
+}
+]
+})
+});
+
+let data = await respuesta.json();
+
+let mensajeIA = data.choices[0].message.content;
+
+mensajes.innerHTML += "<p><b>Asistente:</b> " + mensajeIA + "</p>";
+
+}
+catch(error){
+
+mensajes.innerHTML += "<p><b>Asistente:</b> Error al conectar con la IA.</p>";
+
+}
 
 }
 
 function toggleChat(){
 
-let chat=document.getElementById("chatbot");
+let chat = document.getElementById("chatbot");
 
 if(chat.style.display==="none" || chat.style.display===""){
 chat.style.display="block";
@@ -405,9 +428,9 @@ chat.style.display="none";
 }
 
 </script>
+```
 
-</body>
-</html>
+
 
 
 
