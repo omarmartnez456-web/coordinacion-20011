@@ -79,6 +79,89 @@ border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
+/* CONTACTO */
+
+#contacto{
+text-align:center;
+padding:60px 20px;
+}
+
+.titulo-contacto{
+color:#1e3a8a;
+margin-bottom:40px;
+}
+
+.contacto-container{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.contacto-card{
+background:white;
+padding:25px 30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+width:220px;
+transition:0.3s;
+}
+
+.contacto-card:hover{
+transform:translateY(-5px);
+}
+
+.contacto-card h3{
+margin-bottom:10px;
+color:#2563eb;
+}
+
+.contacto-card p{
+color:#555;
+}
+
+/* AUTORES */
+
+#autores{
+text-align:center;
+padding:60px 20px;
+}
+
+.titulo-autores{
+color:#1e3a8a;
+margin-bottom:40px;
+}
+
+.autores-container{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.autor-card{
+background:white;
+padding:25px 35px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.autor-card:hover{
+transform:translateY(-5px);
+}
+
+.autor-card h3{
+margin:0;
+color:#1e3a8a;
+}
+
+.autor-card p{
+margin-top:8px;
+color:#555;
+font-size:14px;
+}
+
 /* CHATBOT */
 
 .chatbot{
@@ -120,55 +203,6 @@ padding:10px;
 height:200px;
 overflow-y:auto;
 padding:10px;
-}
-
-/* CONTACTO */
-
-#contacto{
-text-align:center;
-}
-
-.contacto-container{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-}
-
-.contacto-card{
-background:white;
-padding:25px 30px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-width:220px;
-}
-
-.contacto-card h3{
-color:#2563eb;
-}
-
-/* AUTORES */
-
-#autores{
-text-align:center;
-}
-
-.autores-container{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-}
-
-.autor-card{
-background:white;
-padding:25px 35px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.autor-card h3{
-color:#1e3a8a;
 }
 
 /* FOOTER */
@@ -269,22 +303,22 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 
 <section id="contacto">
 
-<h2>Contacto</h2>
+<h2 class="titulo-contacto">Contacto</h2>
 
 <div class="contacto-container">
 
 <div class="contacto-card">
-<h3>Email</h3>
+<h3>📧 Email</h3>
 <p>omarmartnez456@gmail.com</p>
 </div>
 
 <div class="contacto-card">
-<h3>Teléfono</h3>
+<h3>📞 Teléfono</h3>
 <p>5728-6135</p>
 </div>
 
 <div class="contacto-card">
-<h3>Dirección</h3>
+<h3>📍 Dirección</h3>
 <p>San Jacinto, Chiquimula, Guatemala</p>
 </div>
 
@@ -294,7 +328,7 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 
 <section id="autores">
 
-<h2>Realizado por</h2>
+<h2 class="titulo-autores">Realizado por</h2>
 
 <div class="autores-container">
 
@@ -361,6 +395,8 @@ document.getElementById("userInput").value="";
 
 </body>
 </html>
+```
+
 
 
 
