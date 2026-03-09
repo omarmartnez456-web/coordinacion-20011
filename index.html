@@ -303,7 +303,6 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 <head>
   
 <style>
-
 /* CONTACTO */
 
 #contacto{
@@ -332,42 +331,41 @@ transform:translateY(-8px);
 box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
-</style>
+.contacto-card h3{
+color:#2563eb;
+margin-bottom:10px;
+}
+  </style>
 
-  </head>
-  
-<body>
-  
-<section id="contacto">
+.contacto-card p{
+color:#555;
+}
+  <section id="contacto">
 
 <h2>Contacto</h2>
 
 <div class="contacto-container">
 
 <div class="contacto-card">
-<h3>Email</h3>
+<h3>📧 Email</h3>
 <p>omarmartnez456@gmail.com</p>
 </div>
 
 <div class="contacto-card">
-<h3>Teléfono</h3>
+<h3>📞 Teléfono</h3>
 <p>5728-6135</p>
 </div>
 
 <div class="contacto-card">
-<h3>Dirección</h3>
+<h3>📍 Dirección</h3>
 <p>San Jacinto, Chiquimula, Guatemala</p>
 </div>
 
-</div>
-
 </section>
-
-  <head>
+<head>
   
 <style>
-
- /* AUTORES */
+/* AUTORES */
 
 #autores{
 text-align:center;
@@ -387,9 +385,24 @@ padding:30px;
 border-radius:12px;
 box-shadow:0 6px 20px rgba(0,0,0,0.1);
 width:260px;
-} 
-</style>
+transition:0.3s;
+}
 
+.autor-card:hover{
+transform:translateY(-8px);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.autor-card h3{
+color:#1e3a8a;
+margin-bottom:10px;
+}
+
+.autor-card p{
+color:#555;
+font-size:14px;
+}
+  </style>
 <section id="autores">
 
 <h2>Realizado por</h2>
@@ -409,7 +422,7 @@ width:260px;
 </div>
 
 </section>
-
+  
 <footer>
 © 2026 Coordinación Distrital 20-011 | Sistema Digital Inteligente
 </footer>
@@ -458,6 +471,7 @@ document.getElementById("userInput").value="";
 }
 
   </script>
+
 
 
 
