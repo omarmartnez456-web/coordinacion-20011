@@ -278,20 +278,86 @@ padding:10px;
 }
 
 </style>
+<head>
 
+<style>
+
+/* Aquí va TODO el CSS */
+
+body{
+font-family:'Segoe UI',sans-serif;
+}
+
+/* SECCIÓN CONTACTO */
+
+#contacto{
+text-align:center;
+padding:60px 20px;
+}
+
+.titulo-contacto{
+color:#1e3a8a;
+margin-bottom:40px;
+}
+
+.contacto-container{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.contacto-card{
+background:white;
+padding:25px 30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+width:220px;
+transition:0.3s;
+}
+
+.contacto-card:hover{
+transform:translateY(-5px);
+}
+
+.contacto-card h3{
+margin-bottom:10px;
+color:#2563eb;
+}
+
+.contacto-card p{
+color:#555;
+}
+
+</style>
+
+</head>
 </section>
 
 <section id="contacto">
 
-<h2>Contacto</h2>
+<h2 class="titulo-contacto">Contacto</h2>
 
-<div class="card">
+<div class="contacto-container">
 
-<p>Email: omarmartnez456@gmail.com</p>
-<p>Teléfono: 5728-6135</p>
-<p>Dirección: San Jacinto, Chiquimula</p>
+<div class="contacto-card">
+<h3>📧 Email</h3>
+<p>omarmartnez456@gmail.com</p>
+</div>
+
+<div class="contacto-card">
+<h3>📞 Teléfono</h3>
+<p>5728-6135</p>
+</div>
+
+<div class="contacto-card">
+<h3>📍 Dirección</h3>
+<p>San Jacinto, Chiquimula, Guatemala</p>
+</div>
 
 </div>
+
+</section>
 
 <style>
 
@@ -404,6 +470,7 @@ document.getElementById("userInput").value="";
 </body>
 </html>
 ```
+
 
 
 
