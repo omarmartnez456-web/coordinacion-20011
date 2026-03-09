@@ -234,20 +234,50 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 
 </div>
 
-</section>
+<style>
 
-<section id="chatbot">
+body{
+font-family:'Segoe UI',sans-serif;
+}
 
-<h2>Asistente Virtual Institucional</h2>
+/* CHATBOT */
 
-<div class="chatbot-box">
+.chatbot{
+position:fixed;
+bottom:20px;
+right:20px;
+width:300px;
+background:white;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+overflow:hidden;
+}
 
-<div id="messages"></div>
+.chat-header{
+background:#2563eb;
+color:white;
+padding:10px;
+font-weight:bold;
+}
 
-<input id="userInput" placeholder="Escribe tu consulta..." style="width:70%; padding:8px;">
-<button onclick="responder()">Enviar</button>
+.chat-input{
+display:flex;
+}
 
-</div>
+.chat-input input{
+flex:1;
+border:none;
+padding:10px;
+}
+
+.chat-input button{
+border:none;
+background:#2563eb;
+color:white;
+padding:10px;
+}
+
+</style>
 
 </section>
 
@@ -330,6 +360,7 @@ document.getElementById("userInput").value="";
 </body>
 </html>
 ```
+
 
 
 
