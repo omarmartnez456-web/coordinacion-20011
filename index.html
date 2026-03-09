@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +10,7 @@
 <style>
 
 body{
-font-family: 'Segoe UI', sans-serif;
+font-family:'Segoe UI',sans-serif;
 margin:0;
 background:#f4f6f9;
 }
@@ -17,14 +18,14 @@ background:#f4f6f9;
 /* ENCABEZADO */
 
 header{
-background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("fondo.jpg");
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-color: white;
-text-align: center;
-padding: 120px 20px;
-min-height: 300px;
+background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("fondo.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+color:white;
+text-align:center;
+padding:120px 20px;
+min-height:300px;
 }
 
 header h1{
@@ -42,15 +43,14 @@ margin-top:10px;
 nav{
 background:#1e40af;
 padding:15px;
-text-align:center;
-position:sticky;
-top:0;
-z-index:1000;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
 }
 
 nav a{
 color:white;
-margin:20px;
+margin:10px 20px;
 text-decoration:none;
 font-weight:bold;
 }
@@ -118,7 +118,7 @@ button:hover{
 background:#1e40af;
 }
 
-/* CHAT FLOTANTE */
+/* BOTON FLOTANTE */
 
 .chat-float{
 position:fixed;
@@ -140,6 +140,34 @@ color:white;
 text-align:center;
 padding:15px;
 margin-top:40px;
+}
+
+/* RESPONSIVE PARA TELEFONO */
+
+@media (max-width:768px){
+
+header h1{
+font-size:28px;
+}
+
+header p{
+font-size:16px;
+}
+
+section{
+padding:30px 15px;
+}
+
+nav{
+flex-direction:column;
+align-items:center;
+}
+
+nav a{
+display:block;
+margin:10px;
+}
+
 }
 
 </style>
@@ -198,12 +226,10 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 <div class="card">
 
 <ul>
-
 <li>Reglamento Interno</li>
 <li>Modelo de Acta</li>
 <li>Circular Informativa</li>
 <li>Formato de Oficio</li>
-
 </ul>
 
 </div>
@@ -232,9 +258,7 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 <div class="card">
 
 <p>Email: omarmartnez456@gmail.com</p>
-
 <p>Teléfono: 5728-6135</p>
-
 <p>Dirección: San Jacinto, Chiquimula</p>
 
 </div>
@@ -257,22 +281,19 @@ Esta plataforma facilita el acceso a información oficial, documentos institucio
 </footer>
 
 <div class="chat-float" onclick="document.getElementById('chatbot').scrollIntoView({behavior:'smooth'});">
-
 Asistente IA
-
 </div>
 
 <script>
 
 function responder(){
 
-let input = document.getElementById("userInput").value.toLowerCase();
+let input=document.getElementById("userInput").value.toLowerCase();
+let mensajes=document.getElementById("messages");
 
-let mensajes = document.getElementById("messages");
+mensajes.innerHTML+="<p><b>Tú:</b> "+input+"</p>";
 
-mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
-
-let respuesta = "Lo siento, no tengo información sobre eso.";
+let respuesta="Lo siento, no tengo información sobre eso.";
 
 if(input.includes("mision"))
 respuesta="La misión es garantizar una gestión educativa eficiente y acompañamiento pedagógico.";
@@ -289,7 +310,7 @@ respuesta="Un acta debe contener: lugar, fecha, participantes, acuerdos y firmas
 else if(input.includes("horario"))
 respuesta="El horario de atención es de lunes a viernes de 8:00 AM a 4:00 PM.";
 
-mensajes.innerHTML += "<p><b>Asistente:</b> "+respuesta+"</p>";
+mensajes.innerHTML+="<p><b>Asistente:</b> "+respuesta+"</p>";
 
 document.getElementById("userInput").value="";
 
@@ -298,8 +319,9 @@ document.getElementById("userInput").value="";
 </script>
 
 </body>
-
 </html>
+```
+
 
 
 
