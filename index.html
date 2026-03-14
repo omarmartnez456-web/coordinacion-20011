@@ -363,6 +363,38 @@ box-shadow:0 10px 25px rgba(0,0,0,0.15);
 .doc-icon{
 font-size:26px;
 }
+  /* RESPONSIVE PARA CELULARES */
+
+@media (max-width:768px){
+
+.docs-grid{
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.doc-card{
+padding:14px;
+font-size:14px;
+}
+
+.doc-icon{
+font-size:22px;
+}
+
+}
+
+@media (max-width:480px){
+
+.docs-grid{
+grid-template-columns:1fr;
+}
+
+.doc-card{
+padding:12px;
+font-size:14px;
+}
+
+}
 </style>
 
 </section>
