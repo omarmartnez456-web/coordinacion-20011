@@ -453,9 +453,43 @@ async function responder(){
 let input = document.getElementById("userInput").value;
 let mensajes = document.getElementById("messages");
 
+if(input.trim()==="") return;
+
 mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
 
 document.getElementById("userInput").value="";
+
+let texto = input.toLowerCase();
+
+
+// SALUDO AUTOMÁTICO
+if(texto.includes("hola")){
+
+mensajes.innerHTML += `<p><b>Asistente:</b>
+¡Hola! 👋<br><br>
+
+Soy el <b>Asistente Virtual de la Coordinación Distrital 20-011</b>.<br>
+Este sistema utiliza <b>Inteligencia Artificial</b> para ayudarte a encontrar documentos, formularios e información administrativa educativa de forma rápida y sencilla.<br><br>
+
+📂 <b>Estos son algunos documentos disponibles:</b><br>
+📄 Acciones de Personal<br>
+📄 Actas de Entrega<br>
+📄 Actas de Toma de Posesión<br>
+📄 Acuerdos Ministeriales<br>
+📄 Entregas Definitivas<br>
+📄 Formatos<br>
+📄 Leyes<br>
+📄 Pacto Colectivo<br>
+📄 Protocolos<br>
+📄 Reglamentos<br><br>
+
+¿En qué puedo ayudarte hoy?
+</p>`;
+
+return;
+
+}
+
 
 try{
 
@@ -490,6 +524,11 @@ mensajes.innerHTML += "<p><b>Asistente:</b> Error al conectar con la IA.</p>";
 }
 
 }
+
+
+
+// ABRIR Y CERRAR CHAT
+
 function toggleChat(){
 
 let chat = document.getElementById("chatbot");
@@ -503,9 +542,6 @@ chat.style.display="none";
 }
 
 </script>
-```
-
-
 
 
 
