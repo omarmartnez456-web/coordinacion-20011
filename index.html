@@ -586,7 +586,6 @@ document.getElementById("userInput").value="";
 let texto = input.toLowerCase();
 
 // ABRIR Y CERRAR CHAT
-
 function toggleChat(){
 
 let chat=document.getElementById("chatbot");
@@ -600,8 +599,35 @@ chat.style.display="block";
 }
 
 
-// BASE DE DOCUMENTOS
+// RESPONDER
+async function responder(){
 
+let input=document.getElementById("userInput").value;
+let mensajes=document.getElementById("messages");
+
+if(input.trim()==="") return;
+
+mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
+
+document.getElementById("userInput").value="";
+
+let texto=input.toLowerCase();
+
+
+// SALUDO
+if(texto.includes("hola")){
+
+mensajes.innerHTML += `<p><b>Asistente:</b>
+¡Hola! 👋<br><br>
+
+Soy el <b>Asistente Virtual de la Coordinación Distrital 20-011</b>.
+</p>`;
+
+return;
+
+}
+
+}
 
 const documentos = [
 
