@@ -585,85 +585,7 @@ document.getElementById("userInput").value="";
 
 let texto = input.toLowerCase();
 
-
-// SALUDO AUTOMÁTICO
-if(texto.includes("hola")){
-
-mensajes.innerHTML += `<p><b>Asistente:</b>
-¡Hola! 👋<br><br>
-
-Soy el <b>Asistente Virtual de la Coordinación Distrital 20-011</b>.<br>
-Este sistema utiliza <b>Inteligencia Artificial</b> para ayudarte a encontrar documentos, formularios e información administrativa educativa de forma rápida y sencilla.<br><br>
-
-📂 <b>Estos son algunos documentos disponibles:</b><br>
-📄 Acciones de Personal<br>
-📄 Actas de Entrega<br>
-📄 Actas de Toma de Posesión<br>
-📄 Acuerdos Ministeriales<br>
-📄 Entregas Definitivas<br>
-📄 Formatos<br>
-📄 Leyes<br>
-📄 Pacto Colectivo<br>
-📄 Protocolos<br>
-📄 Reglamentos<br><br>
-
-¿En qué puedo ayudarte hoy?
-</p>`;
-
-return;
-
-}
-
-
-try{
-
-let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
-method:"POST",
-headers:{
-"Authorization":"Bearer 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",
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-model:"openai/gpt-3.5-turbo",
-messages:[
-{
-role:"user",
-content:input
-}
-]
-})
-});
-
-let data = await respuesta.json();
-
-let mensajeIA = data.choices[0].message.content;
-
-mensajes.innerHTML += "<p><b>Asistente:</b> "+mensajeIA+"</p>";
-
-}
-catch(error){
-
-mensajes.innerHTML += "<p><b>Asistente:</b> Error al conectar con la IA.</p>";
-
-}
-
-}
-// ENTER PARA ENVIAR MENSAJE
-
-document.getElementById("userInput").addEventListener("keypress", function(event){
-
-if(event.key === "Enter"){
-
-event.preventDefault();
-
-responder();
-
-}
-
-});
-
-
-/* ABRIR Y CERRAR CHAT */
+// ABRIR Y CERRAR CHAT
 
 function toggleChat(){
 
@@ -677,6 +599,8 @@ chat.style.display="block";
 
 }
 
+
+// BASE DE DOCUMENTOS
 
 
 const documentos = [
@@ -738,49 +662,126 @@ const documentos = [
 ];
 
 // BUSCAR DOCUMENTO
+
 function buscarDocumento(texto){
 
-texto = texto.toLowerCase();
+texto=texto.toLowerCase();
 
 for(let doc of documentos){
 
 if(texto.includes(doc.nombre)){
+
 return `
 📄 <b>${doc.nombre}</b><br>
 <a href="${doc.link}" target="_blank">Descargar documento</a>
 `;
+
 }
 
 }
 
 return null;
+
 }
 
 
-// ENVIAR MENSAJE
+// RESPONDER
+
 async function responder(){
 
-let input = document.getElementById("userInput").value.trim();
-let mensajes = document.getElementById("messages");
+let input=document.getElementById("userInput").value.trim();
+let mensajes=document.getElementById("messages");
 
 if(input==="") return;
 
-mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
+mensajes.innerHTML+="<p><b>Tú:</b> "+input+"</p>";
 
 document.getElementById("userInput").value="";
 
+let texto=input.toLowerCase();
+
+
+// SALUDO
+
+if(texto.includes("hola")){
+
+mensajes.innerHTML+=`<p><b>Asistente:</b>
+¡Hola! 👋<br><br>
+
+Soy el <b>Asistente Virtual de la Coordinación Distrital 20-011</b>.<br>
+Este sistema utiliza <b>Inteligencia Artificial</b> para ayudarte a encontrar documentos.<br><br>
+
+📂 Documentos disponibles:<br>
+📄 Acciones de Personal<br>
+📄 Actas de Entrega<br>
+📄 Actas de Toma de Posesión<br>
+📄 Acuerdos Ministeriales<br>
+📄 Entregas Definitivas<br>
+📄 Formatos<br>
+📄 Leyes<br>
+📄 Pacto Colectivo<br>
+📄 Protocolos<br>
+📄 Reglamentos<br><br>
+
+¿En qué puedo ayudarte?
+</p>`;
+
+return;
+
+}
+
 
 // BUSCAR DOCUMENTO
-let doc = buscarDocumento(input);
+
+let doc=buscarDocumento(input);
 
 if(doc){
-mensajes.innerHTML += "<p><b>Asistente:</b><br>"+doc+"</p>";
+
+mensajes.innerHTML+="<p><b>Asistente:</b><br>"+doc+"</p>";
 return;
+
+}
+
+
+// IA
+
+try{
+
+let respuesta=await fetch("https://openrouter.ai/api/v1/chat/completions",{
+method:"POST",
+headers:{
+"Authorization":"Bearer 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",
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+model:"openai/gpt-3.5-turbo",
+messages:[
+{role:"user",content:input}
+]
+})
+});
+
+let data=await respuesta.json();
+
+let mensajeIA=data.choices[0].message.content;
+
+mensajes.innerHTML+="<p><b>Asistente:</b> "+mensajeIA+"</p>";
+
+}
+catch(error){
+
+mensajes.innerHTML+="<p><b>Asistente:</b> Error al conectar con la IA.</p>";
+
+}
+
+mensajes.scrollTop=mensajes.scrollHeight;
+
 }
 
 
 // ENTER PARA ENVIAR
-document.getElementById("userInput").addEventListener("keypress", function(event){
+
+document.getElementById("userInput").addEventListener("keypress",function(event){
 
 if(event.key==="Enter"){
 event.preventDefault();
@@ -788,13 +789,6 @@ responder();
 }
 
 });
-
-</script>
-
-
-
-
-
 
 
 
