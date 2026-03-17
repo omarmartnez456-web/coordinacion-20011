@@ -781,40 +781,6 @@ const documentos = [
 
 {nombre:"guia redaccion documentos comision casos de violencia", categoria:"reglamentos", link:"https://drive.google.com/file/d/1VmsWW5s1Vofc23pDcieVmZeh_rmfJ6XK/view"}
 ];
-// ===============================
-// FUNCION IA
-// ===============================
-
-// async function preguntarIA(texto){
-//
-// let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
-// method:"POST",
-// headers:{
-// "Content-Type":"application/json",
-// "Authorization":"Bearer TU_API_KEY"
-// },
-// body: JSON.stringify({
-// model:"openai/gpt-3.5-turbo",
-// messages:[
-// {
-// role:"user",
-// content:texto
-// }
-// ]
-// })
-// });
-//
-// let data = await respuesta.json();
-//
-// return data.choices[0].message.content;
-//
-// }
-
-let data = await respuesta.json();
-
-return data.choices[0].message.content;
-
-}
 
 // ===============================
 // BUSCAR DOCUMENTO MEJORADO
