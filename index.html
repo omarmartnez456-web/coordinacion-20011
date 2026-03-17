@@ -939,5 +939,248 @@ responder();
 }
 
 });
+  
+  // ===============================
+// ACCIONES DE PERSONAL
+// ===============================
 
-</script>
+function listarAcciones(){
+
+let lista = documentos.filter(doc => doc.categoria === "acciones");
+
+let html = `<p><b>📂 ACCIONES DE PERSONAL</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
+
+return html;
+
+}
+  // ===============================
+// ACTAS DE ENTREGA
+// ===============================
+
+function listarActasEntrega(){
+
+let lista = documentos.filter(doc => doc.categoria === "actas_entrega");
+
+let html = `<p><b>📂 ACTAS DE ENTREGA</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
+
+return html;
+
+}
+  // ===============================
+// ACTAS DE TOMA DE POSESIÓN
+// ===============================
+
+function listarActasPosesion(){
+
+let lista = documentos.filter(doc => doc.categoria === "actas_posesion");
+
+let html = `<p><b>📂 ACTAS DE TOMA DE POSESIÓN</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
+
+return html;
+
+}
+  // ===============================
+// ACUERDOS MINISTERIALES
+// ===============================
+
+function listarAcuerdos(){
+
+let lista = documentos.filter(doc => doc.categoria === "acuerdos");
+
+let html = `<p><b>📂 ACUERDOS MINISTERIALES</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para abrirlo.</p>`;
+
+return html;
+
+}
+  // ===============================
+// ENTREGAS DEFINITIVAS
+// ===============================
+
+function listarEntregasDefinitivas(){
+
+let lista = documentos.filter(doc => doc.categoria === "entregas_definitivas");
+
+let html = `<p><b>📂 ENTREGAS DEFINITIVAS</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
+
+return html;
+
+}
+  // ===============================
+// FORMATOS
+// ===============================
+
+function listarFormatos(){
+
+let lista = documentos.filter(doc => doc.categoria === "formatos");
+
+let html = `<p><b>📂 FORMATOS DISPONIBLES</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
+
+return html;
+
+}
+  // ===============================
+// LEYES
+// ===============================
+
+function listarLeyes(){
+
+let lista = documentos.filter(doc => doc.categoria === "leyes");
+
+let html = `<p><b>📂 LEYES Y NORMATIVAS</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre de la ley para abrir el documento.</p>`;
+
+return html;
+
+}
+  // ===============================
+// PACTO COLECTIVO
+// ===============================
+
+function listarPacto(){
+
+let lista = documentos.filter(doc => doc.categoria === "pacto");
+
+let html = `<p><b>📂 PACTO COLECTIVO</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para abrirlo.</p>`;
+
+return html;
+
+}
+  // ===============================
+// PROTOCOLOS
+// ===============================
+
+function listarProtocolos(){
+
+let lista = documentos.filter(doc => doc.categoria === "protocolos");
+
+let html = `<p><b>📂 PROTOCOLOS</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para abrirlo.</p>`;
+
+return html;
+
+}
+  // ===============================
+// REGLAMENTOS
+// ===============================
+
+function listarReglamentos(){
+
+let lista = documentos.filter(doc => doc.categoria === "reglamentos");
+
+let html = `<p><b>📂 REGLAMENTOS</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para abrirlo.</p>`;
+
+return html;
+
+}
+  
+// MOSTRAR SECCIONES DE DOCUMENTOS
+
+if(texto.includes("acciones")){
+mensajes.innerHTML += listarAcciones();
+return;
+}
+
+if(texto.includes("actas de entrega")){
+mensajes.innerHTML += listarActasEntrega();
+return;
+}
+
+if(texto.includes("actas toma de posesion") || texto.includes("toma de posesion")){
+mensajes.innerHTML += listarActasPosesion();
+return;
+}
+
+if(texto.includes("acuerdos")){
+mensajes.innerHTML += listarAcuerdos();
+return;
+}
+
+if(texto.includes("entregas definitivas")){
+mensajes.innerHTML += listarEntregasDefinitivas();
+return;
+}
+
+if(texto.includes("formatos")){
+mensajes.innerHTML += listarFormatos();
+return;
+}
+
+if(texto.includes("leyes")){
+mensajes.innerHTML += listarLeyes();
+return;
+}
+
+if(texto.includes("pacto colectivo")){
+mensajes.innerHTML += listarPacto();
+return;
+}
+
+if(texto.includes("protocolos")){
+mensajes.innerHTML += listarProtocolos();
+return;
+}
+
+if(texto.includes("reglamentos")){
+mensajes.innerHTML += listarReglamentos();
+return;
+}
+
+
