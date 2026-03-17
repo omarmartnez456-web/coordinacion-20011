@@ -773,7 +773,7 @@ const documentos = [
 
 {nombre:"guia redaccion documentos comision casos de violencia", categoria:"reglamentos", link:"https://drive.google.com/file/d/1VmsWW5s1Vofc23pDcieVmZeh_rmfJ6XK/view"},
   ];
-  
+
 // ===============================
 // BUSCAR DOCUMENTO
 // ===============================
@@ -784,16 +784,16 @@ texto = texto.toLowerCase();
 
 for(let doc of documentos){
 
-if(texto.includes(doc.nombre)){
+if(texto.includes(doc.nombre.toLowerCase())){
 
 return `
-<div style="margin-top:8px">
+<div style="margin-top:10px">
 📄 <b>Documento encontrado</b><br><br>
 
 <b>${doc.nombre.toUpperCase()}</b><br><br>
 
 <a href="${doc.link}" target="_blank"
-style="color:white;background:#2563eb;padding:6px 12px;border-radius:6px;text-decoration:none;">
+style="color:white;background:#2563eb;padding:8px 14px;border-radius:6px;text-decoration:none;">
 📥 Descargar documento
 </a>
 
@@ -810,7 +810,7 @@ return null;
 
 
 // ===============================
-// LISTAR CATEGORIAS
+// LISTAR CATEGORÍAS
 // ===============================
 
 function listarCategoria(cat,titulo){
@@ -823,7 +823,7 @@ lista.forEach(doc=>{
 html += "📄 " + doc.nombre + "<br>";
 });
 
-html += "<br>Escribe el nombre del documento para descargarlo.</p>";
+html += "<br>✏️ Escribe el nombre del documento para descargarlo.</p>";
 
 return html;
 
@@ -839,29 +839,37 @@ async function responder(){
 let input = document.getElementById("userInput").value.trim();
 let mensajes = document.getElementById("messages");
 
-if(input==="") return;
+if(input === "") return;
 
-mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
+mensajes.innerHTML += "<p><b>Tú:</b> " + input + "</p>";
 
-document.getElementById("userInput").value="";
+document.getElementById("userInput").value = "";
 
 let texto = input.toLowerCase();
 
 
+// ===============================
 // SALUDO
+// ===============================
 
 if(texto.includes("hola")){
 
-mensajes.innerHTML += `<p><b>Asistente:</b>
-Hola 👋 soy el asistente virtual de la coordinación distrital.
-Puedes buscar documentos administrativos.</p>`;
+mensajes.innerHTML += `
+<p><b>Asistente:</b><br>
+Hola 👋 soy el asistente virtual de la coordinación distrital.<br>
+Puedes buscar documentos administrativos.
+</p>
+`;
 
+mensajes.scrollTop = mensajes.scrollHeight;
 return;
 
 }
 
 
+// ===============================
 // MOSTRAR SECCIONES
+// ===============================
 
 if(texto.includes("acciones")){
 mensajes.innerHTML += listarCategoria("acciones","ACCIONES DE PERSONAL");
@@ -874,7 +882,7 @@ return;
 }
 
 if(texto.includes("posesion")){
-mensajes.innerHTML += listarCategoria("actas_posesion","ACTAS DE TOMA DE POSESION");
+mensajes.innerHTML += listarCategoria("actas_posesion","ACTAS DE TOMA DE POSESIÓN");
 return;
 }
 
@@ -913,61 +921,51 @@ mensajes.innerHTML += listarCategoria("reglamentos","REGLAMENTOS");
 return;
 }
 
+
+// ===============================
 // BUSCAR DOCUMENTO
+// ===============================
 
 let doc = buscarDocumento(texto);
 
 if(doc){
-mensajes.innerHTML += "<p><b>Asistente:</b><br>"+doc+"</p>";
+mensajes.innerHTML += "<p><b>Asistente:</b><br>" + doc + "</p>";
 mensajes.scrollTop = mensajes.scrollHeight;
 return;
 }
 
 
-// IA
+// ===============================
+// RESPUESTA POR DEFECTO
+// ===============================
 
-try{
+mensajes.innerHTML += `
+<p><b>Asistente:</b><br>
+No encontré ese documento.<br>
+Puedes escribir por ejemplo:<br><br>
 
-let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
-method:"POST",
-headers:{
-"Authorization":"Bearer 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",
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-model:"openai/gpt-3.5-turbo",
-messages:[
-{role:"user",content:input}
-]
-})
-});
-
-let data = await respuesta.json();
-
-let mensajeIA = data.choices[0].message.content;
-
-mensajes.innerHTML += "<p><b>Asistente:</b> "+mensajeIA+"</p>";
-
-}
-catch(error){
-
-mensajes.innerHTML += "<p><b>Asistente:</b> Error al conectar con la IA.</p>";
-
-}
+• acciones<br>
+• actas entrega<br>
+• leyes<br>
+• formatos<br>
+</p>
+`;
 
 mensajes.scrollTop = mensajes.scrollHeight;
 
 }
 
 
+// ===============================
 // ENTER PARA ENVIAR
+// ===============================
 
-document.getElementById("userInput").addEventListener("keypress",function(event){
+document.getElementById("userInput").addEventListener("keypress", function(event){
 
-if(event.key==="Enter"){
+if(event.key === "Enter"){
 event.preventDefault();
 responder();
 }
 
 });
-  <script>
+  
