@@ -800,9 +800,11 @@ const documentos = [
 
 {nombre:"guía redacción documentos comisión casos de violencia", categoria:"reglamentos", link:"https://drive.google.com/file/d/1VmsWW5s1Vofc23pDcieVmZeh_rmfJ6XK/view"},
 
-];
-
+  ];
+  
+// ===============================
 // BUSCAR DOCUMENTO
+// ===============================
 
 function buscarDocumento(texto){
 
@@ -818,12 +820,14 @@ return `
 
 <b>${doc.nombre.toUpperCase()}</b><br><br>
 
-<a href="${doc.link}" target="_blank" 
+<a href="${doc.link}" target="_blank"
 style="color:white;background:#2563eb;padding:6px 12px;border-radius:6px;text-decoration:none;">
 📥 Descargar documento
 </a>
+
 </div>
 `;
+
 }
 
 }
@@ -833,7 +837,30 @@ return null;
 }
 
 
+// ===============================
+// LISTAR CATEGORIAS
+// ===============================
+
+function listarCategoria(cat,titulo){
+
+let lista = documentos.filter(doc => doc.categoria === cat);
+
+let html = `<p><b>📂 ${titulo}</b><br><br>`;
+
+lista.forEach(doc=>{
+html += `📄 ${doc.nombre}<br>`;
+});
+
+html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
+
+return html;
+
+}
+
+
+// ===============================
 // RESPONDER
+// ===============================
 
 async function responder(){
 
@@ -854,104 +881,59 @@ let texto = input.toLowerCase();
 if(texto.includes("hola")){
 
 mensajes.innerHTML += `<p><b>Asistente:</b>
-¡Hola! 👋<br><br>
-
-Soy el <b>Asistente Virtual de la Coordinación Distrital 20-011</b>.<br>
-Este sistema utiliza <b>Inteligencia Artificial</b> para ayudarte a encontrar documentos administrativos educativos.<br><br>
-
-📂 Documentos disponibles:<br>
-📄 Acciones de Personal<br>
-📄 Actas de Entrega<br>
-📄 Actas de Toma de Posesión<br>
-📄 Acuerdos Ministeriales<br>
-📄 Entregas Definitivas<br>
-📄 Formatos<br>
-📄 Leyes<br>
-📄 Pacto Colectivo<br>
-📄 Protocolos<br>
-📄 Reglamentos<br><br>
-
-¿En qué puedo ayudarte?
-</p>`;
+Hola 👋 soy el asistente virtual de la coordinación distrital.
+Puedes buscar documentos administrativos.</p>`;
 
 return;
 
 }
 
 
-// ===============================
-// MOSTRAR SECCIONES DE DOCUMENTOS
-// ===============================
+// MOSTRAR SECCIONES
 
 if(texto.includes("acciones")){
-mensajes.innerHTML += listarAcciones();
+mensajes.innerHTML += listarCategoria("acciones","ACCIONES DE PERSONAL");
 return;
 }
 
-if(texto.includes("actas de entrega")){
-mensajes.innerHTML += listarActasEntrega();
+if(texto.includes("actas entrega")){
+mensajes.innerHTML += listarCategoria("actas_entrega","ACTAS DE ENTREGA");
 return;
 }
 
-if(texto.includes("actas toma de posesion") || texto.includes("toma de posesion")){
-mensajes.innerHTML += listarActasPosesion();
-return;
-}
-
-if(texto.includes("acuerdos")){
-mensajes.innerHTML += listarAcuerdos();
-return;
-}
-
-if(texto.includes("entregas definitivas")){
-mensajes.innerHTML += listarEntregasDefinitivas();
+if(texto.includes("posesion")){
+mensajes.innerHTML += listarCategoria("actas_posesion","ACTAS DE TOMA DE POSESION");
 return;
 }
 
 if(texto.includes("formatos")){
-mensajes.innerHTML += listarFormatos();
+mensajes.innerHTML += listarCategoria("formatos","FORMATOS");
 return;
 }
 
 if(texto.includes("leyes")){
-mensajes.innerHTML += listarLeyes();
-return;
-}
-
-if(texto.includes("pacto colectivo")){
-mensajes.innerHTML += listarPacto();
+mensajes.innerHTML += listarCategoria("leyes","LEYES");
 return;
 }
 
 if(texto.includes("protocolos")){
-mensajes.innerHTML += listarProtocolos();
-return;
-}
-
-if(texto.includes("reglamentos")){
-mensajes.innerHTML += listarReglamentos();
+mensajes.innerHTML += listarCategoria("protocolos","PROTOCOLOS");
 return;
 }
 
 
-// ===============================
 // BUSCAR DOCUMENTO
-// ===============================
 
 let doc = buscarDocumento(input);
 
 if(doc){
-
 mensajes.innerHTML += "<p><b>Asistente:</b><br>"+doc+"</p>";
 mensajes.scrollTop = mensajes.scrollHeight;
 return;
-
 }
 
 
-// ===============================
 // IA
-// ===============================
 
 try{
 
