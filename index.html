@@ -573,18 +573,18 @@ Asistente IA
 <script>
 
 // ABRIR Y CERRAR CHAT
+  
 function toggleChat(){
 
 let chat = document.getElementById("chatbot");
 
-if(chat.style.display==="block"){
+if(chat.style.display==="flex"){
 chat.style.display="none";
 }else{
-chat.style.display="block";
+chat.style.display="flex";
 }
 
 }
-
 
 const documentos = [
  
@@ -600,7 +600,7 @@ const documentos = [
 {nombre:"reinstalacion", categoria:"acciones", link:"https://docs.google.com/document/d/1o3h-sLVjdWDhHGhxpD7anwFOqaRMEkdc/edit"},
 {nombre:"suspension disciplinario", categoria:"acciones", link:"https://docs.google.com/document/d/1Oo8XRPlHQ9hA5ePFOgoSzdovldMmY70f/edit"},
 {nombre:"suspensiones igss", categoria:"acciones", link:"https://docs.google.com/document/d/1ZHJ57HMsnn1kVvovuFTh6IZ_mnQq5dx8/edit"},
-{nombre:"traslado", categoria:"acciones", link:"https://docs.google.com/document/d/1xnlsEHuRQuEEHNqFKZbAPrODX0Y-0Pcw/edit"}
+{nombre:"traslado", categoria:"acciones", link:"https://docs.google.com/document/d/1xnlsEHuRQuEEHNqFKZbAPrODX0Y-0Pcw/edit"},
 
 /* ACTAS DE ENTREGA */
 
@@ -1021,6 +1021,5 @@ responder();
 }
 
 });
-
 
 
