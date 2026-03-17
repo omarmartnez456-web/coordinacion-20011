@@ -777,36 +777,45 @@ const documentos = [
 /* REGLAMENTOS */
 
 {nombre:"guia redaccion documentos comision casos de violencia", categoria:"reglamentos", link:"https://drive.google.com/file/d/1VmsWW5s1Vofc23pDcieVmZeh_rmfJ6XK/view"}
-
 ];
 
 // ===============================
-// BUSCAR DOCUMENTO
+// BUSCAR DOCUMENTO MEJORADO
 // ===============================
 
 function buscarDocumento(texto){
 
 texto = texto.toLowerCase();
 
-for(let doc of documentos){
+let resultados = documentos.filter(doc =>
+doc.nombre.toLowerCase().includes(texto)
+);
 
-if(texto.includes(doc.nombre.toLowerCase())){
+if(resultados.length > 0){
 
-return `
+let html = `
 <div style="margin-top:10px">
-📄 <b>Documento encontrado</b><br><br>
+📄 <b>Documentos encontrados</b><br><br>
+`;
 
+resultados.forEach(doc => {
+
+html += `
+<div style="margin-bottom:10px;padding:10px;border:1px solid #ddd;border-radius:6px;">
 <b>${doc.nombre.toUpperCase()}</b><br><br>
 
 <a href="${doc.link}" target="_blank"
-style="color:white;background:#2563eb;padding:8px 14px;border-radius:6px;text-decoration:none;">
+style="color:white;background:#2563eb;padding:6px 12px;border-radius:6px;text-decoration:none;">
 📥 Descargar documento
 </a>
-
 </div>
 `;
 
-}
+});
+
+html += `</div>`;
+
+return html;
 
 }
 
@@ -814,27 +823,40 @@ return null;
 
 }
 
-
 // ===============================
-// LISTAR CATEGORÍAS
+// LISTAR CATEGORÍAS MEJORADO
 // ===============================
 
 function listarCategoria(cat,titulo){
 
 let lista = documentos.filter(doc => doc.categoria === cat);
 
-let html = "<p><b>📂 " + titulo + "</b><br><br>";
+let html = `
+<div style="margin-top:10px">
+<b>📂 ${titulo}</b><br><br>
+`;
 
 lista.forEach(doc=>{
-html += "📄 " + doc.nombre + "<br>";
+
+html += `
+<div style="margin-bottom:10px;padding:8px;border:1px solid #ddd;border-radius:6px;">
+📄 <b>${doc.nombre}</b><br><br>
+
+<a href="${doc.link}" target="_blank"
+style="color:white;background:#2563eb;padding:6px 12px;border-radius:6px;text-decoration:none;">
+📥 Descargar
+</a>
+
+</div>
+`;
+
 });
 
-html += "<br>✏️ Escribe el nombre del documento para descargarlo.</p>";
+html += "</div>";
 
 return html;
 
 }
-
 
 // ===============================
 // RESPONDER
@@ -858,12 +880,32 @@ let texto = input.toLowerCase();
 // SALUDO
 // ===============================
 
-if(texto.includes("hola")){
+if(
+texto.includes("hola") ||
+texto.includes("buenos dias") ||
+texto.includes("buenas tardes") ||
+texto.includes("buenas noches") ||
+texto.includes("saludos")
+){
 
 mensajes.innerHTML += `
 <p><b>Asistente:</b><br>
-Hola 👋 soy el asistente virtual de la coordinación distrital.<br>
-Puedes buscar documentos administrativos.
+Hola 👋 soy el asistente virtual de la coordinación distrital.<br><br>
+
+Puedes buscar documentos por categoría escribiendo:<br><br>
+
+📂 acciones<br>
+📂 actas entrega<br>
+📂 posesion<br>
+📂 acuerdos<br>
+📂 entregas<br>
+📂 formatos<br>
+📂 leyes<br>
+📂 pacto<br>
+📂 protocolos<br>
+📂 reglamentos<br><br>
+
+O escribe el nombre del documento que deseas buscar.
 </p>
 `;
 
@@ -927,7 +969,6 @@ mensajes.innerHTML += listarCategoria("reglamentos","REGLAMENTOS");
 return;
 }
 
-
 // ===============================
 // BUSCAR DOCUMENTO
 // ===============================
@@ -947,20 +988,26 @@ return;
 
 mensajes.innerHTML += `
 <p><b>Asistente:</b><br>
-No encontré ese documento.<br>
-Puedes escribir por ejemplo:<br><br>
+No encontré ese documento.<br><br>
 
-• acciones<br>
-• actas entrega<br>
-• leyes<br>
-• formatos<br>
+Puedes buscar por categorías como:<br><br>
+
+📂 acciones<br>
+📂 actas entrega<br>
+📂 posesion<br>
+📂 acuerdos<br>
+📂 entregas<br>
+📂 formatos<br>
+📂 leyes<br>
+📂 pacto<br>
+📂 protocolos<br>
+📂 reglamentos<br><br>
+
+O escribe el nombre del documento que deseas buscar.
 </p>
 `;
 
 mensajes.scrollTop = mensajes.scrollHeight;
-
-}
-
 
 // ===============================
 // ENTER PARA ENVIAR
