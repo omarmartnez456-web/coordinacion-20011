@@ -817,13 +817,13 @@ function listarCategoria(cat,titulo){
 
 let lista = documentos.filter(doc => doc.categoria === cat);
 
-let html = `<p><b>📂 ${titulo}</b><br><br>`;
+let html = "<p><b>📂 " + titulo + "</b><br><br>";
 
 lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
+html += "📄 " + doc.nombre + "<br>";
 });
 
-html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
+html += "<br>Escribe el nombre del documento para descargarlo.</p>";
 
 return html;
 
