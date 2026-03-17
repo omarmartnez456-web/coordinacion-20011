@@ -663,10 +663,11 @@ responder();
 });
 
 
-// ABRIR Y CERRAR CHAT
+/* ABRIR Y CERRAR CHAT */
+
 function toggleChat(){
 
-let chat = document.getElementById("chatbot");
+let chat=document.getElementById("chatbot");
 
 if(chat.style.display==="block"){
 chat.style.display="none";
@@ -675,6 +676,7 @@ chat.style.display="block";
 }
 
 }
+
 
 
 const documentos = [
@@ -774,42 +776,6 @@ let doc = buscarDocumento(input);
 if(doc){
 mensajes.innerHTML += "<p><b>Asistente:</b><br>"+doc+"</p>";
 return;
-}
-
-
-// RESPUESTA IA
-
-try{
-
-let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
-method:"POST",
-headers:{
-"Authorization":"Bearer TU_API_KEY",
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-model:"openai/gpt-3.5-turbo",
-messages:[
-{role:"user",content:input}
-]
-})
-});
-
-let data = await respuesta.json();
-
-let mensajeIA = data.choices[0].message.content;
-
-mensajes.innerHTML += "<p><b>Asistente:</b> "+mensajeIA+"</p>";
-
-}
-catch(error){
-
-mensajes.innerHTML += "<p><b>Asistente:</b> Error al conectar con la IA.</p>";
-
-}
-
-mensajes.scrollTop = mensajes.scrollHeight;
-
 }
 
 
