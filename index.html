@@ -814,10 +814,18 @@ for(let doc of documentos){
 if(texto.includes(doc.nombre)){
 
 return `
-📄 <b>${doc.nombre}</b><br>
-<a href="${doc.link}" target="_blank">Abrir documento</a>
-`;
+return `
+<div style="margin-top:8px">
+📄 <b>Documento encontrado</b><br><br>
 
+<b>${doc.nombre.toUpperCase()}</b><br><br>
+
+<a href="${doc.link}" target="_blank" 
+style="color:white;background:#2563eb;padding:6px 12px;border-radius:6px;text-decoration:none;">
+📥 Descargar documento
+</a>
+</div>
+`;
 }
 
 }
