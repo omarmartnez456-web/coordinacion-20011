@@ -572,126 +572,84 @@ Asistente IA
 
 <script>
 
-async function responder(){
-
-let input = document.getElementById("userInput").value;
-let mensajes = document.getElementById("messages");
-
-if(input.trim()==="") return;
-
-mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
-
-document.getElementById("userInput").value="";
-
-let texto = input.toLowerCase();
-
 // ABRIR Y CERRAR CHAT
 function toggleChat(){
 
-let chat=document.getElementById("chatbot");
+let chat = document.getElementById("chatbot");
 
-if(chat.style.display==="block"){
-chat.style.display="none";
+if(chat.style.display === "block"){
+chat.style.display = "none";
 }else{
-chat.style.display="block";
+chat.style.display = "block";
 }
 
 }
 
 
-// RESPONDER
-async function responder(){
-
-let input=document.getElementById("userInput").value;
-let mensajes=document.getElementById("messages");
-
-if(input.trim()==="") return;
-
-mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
-
-document.getElementById("userInput").value="";
-
-let texto=input.toLowerCase();
-
-
-// SALUDO
-if(texto.includes("hola")){
-
-mensajes.innerHTML += `<p><b>Asistente:</b>
-¡Hola! 👋<br><br>
-
-Soy el <b>Asistente Virtual de la Coordinación Distrital 20-011</b>.
-</p>`;
-
-return;
-
-}
-
-}
+// BASE DE DOCUMENTOS
 
 const documentos = [
 
 /* ACCIONES DE PERSONAL */
 
-{nombre:"ascenso",link:"https://docs.google.com/document/d/1ecT_K5yQSEh__TLbOGv1ArN5LOOtGhj-/edit",tipo:"word"},
-{nombre:"interinatos",link:"https://docs.google.com/document/d/1t9ckeZ_aMwATsu5Z7u0gGuChRgHhj0Kf/edit",tipo:"word"},
-{nombre:"licencia con o sin goce de salario",link:"https://docs.google.com/document/d/13o2xVy0Vd5E_4WLltlHQa6EavDLuytgQ/edit",tipo:"word"},
-{nombre:"permuta",link:"https://docs.google.com/document/d/1Go5UBN0lAsSUfC9UxW8Bwnr9Q0tchoaJ/edit",tipo:"word"},
-{nombre:"primer ingreso",link:"https://docs.google.com/document/d/1MvAYG-LHRywfLV4Tb_GZqZLSLcaNXLHP/edit",tipo:"word"},
-{nombre:"reingreso",link:"https://docs.google.com/document/d/1LzRLx0Jf89Xm3ueALM9Gx0gBHEQbB0uV/edit",tipo:"word"},
-{nombre:"reinstalación",link:"https://docs.google.com/document/d/1o3h-sLVjdWDhHGhxpD7anwFOqaRMEkdc/edit",tipo:"word"},
-{nombre:"suspensión disciplinario",link:"https://docs.google.com/document/d/1Oo8XRPlHQ9hA5ePFOgoSzdovldMmY70f/edit",tipo:"word"},
-{nombre:"suspensiones igss",link:"https://docs.google.com/document/d/1ZHJ57HMsnn1kVvovuFTh6IZ_mnQq5dx8/edit",tipo:"word"},
-{nombre:"traslado",link:"https://docs.google.com/document/d/1xnlsEHuRQuEEHNqFKZbAPrODX0Y-0Pcw/edit",tipo:"word"},
-
+{nombre:"ascenso",link:"https://docs.google.com/document/d/1ecT_K5yQSEh__TLbOGv1ArN5LOOtGhj-/edit"},
+{nombre:"interinatos",link:"https://docs.google.com/document/d/1t9ckeZ_aMwATsu5Z7u0gGuChRgHhj0Kf/edit"},
+{nombre:"licencia con o sin goce de salario",link:"https://docs.google.com/document/d/13o2xVy0Vd5E_4WLltlHQa6EavDLuytgQ/edit"},
+{nombre:"permuta",link:"https://docs.google.com/document/d/1Go5UBN0lAsSUfC9UxW8Bwnr9Q0tchoaJ/edit"},
+{nombre:"primer ingreso",link:"https://docs.google.com/document/d/1MvAYG-LHRywfLV4Tb_GZqZLSLcaNXLHP/edit"},
+{nombre:"reingreso",link:"https://docs.google.com/document/d/1LzRLx0Jf89Xm3ueALM9Gx0gBHEQbB0uV/edit"},
+{nombre:"reinstalación",link:"https://docs.google.com/document/d/1o3h-sLVjdWDhHGhxpD7anwFOqaRMEkdc/edit"},
+{nombre:"suspensión disciplinario",link:"https://docs.google.com/document/d/1Oo8XRPlHQ9hA5ePFOgoSzdovldMmY70f/edit"},
+{nombre:"suspensiones igss",link:"https://docs.google.com/document/d/1ZHJ57HMsnn1kVvovuFTh6IZ_mnQq5dx8/edit"},
+{nombre:"traslado",link:"https://docs.google.com/document/d/1xnlsEHuRQuEEHNqFKZbAPrODX0Y-0Pcw/edit"},
 
 /* ACTAS */
 
-{nombre:"acta de renuncia",link:"https://docs.google.com/document/d/1_Z5M4ddnr0Ffmi6TreHdl-kFAIMz8aFw/edit",tipo:"word"},
-{nombre:"acta de jubilación",link:"https://docs.google.com/document/d/1sTdvWFBwoVw5XY6jxO-KnbwKBwRrx34W/edit",tipo:"word"},
-{nombre:"acta de traslado",link:"https://docs.google.com/document/d/1sdITsiagR-nxxYIkjbMBzSvdeG2fTge-/edit",tipo:"word"},
-{nombre:"acta de destitución",link:"https://docs.google.com/document/d/1il11xiVw6pgSuEByISuL-dSPOQq9NrJw/edit",tipo:"word"},
-{nombre:"acta de fallecimiento",link:"https://docs.google.com/document/d/1QRkb-YnWck8Eu9mCbo_72nfvvmVRdrrz/edit",tipo:"word"},
-{nombre:"acta de permuta",link:"https://docs.google.com/document/d/1bUhpXMW4tg10XTPk6fkAUjx5wawzA_Ya/edit",tipo:"word"},
+{nombre:"acta de renuncia",link:"https://docs.google.com/document/d/1_Z5M4ddnr0Ffmi6TreHdl-kFAIMz8aFw/edit"},
+{nombre:"acta de jubilación",link:"https://docs.google.com/document/d/1sTdvWFBwoVw5XY6jxO-KnbwKBwRrx34W/edit"},
+{nombre:"acta de traslado",link:"https://docs.google.com/document/d/1sdITsiagR-nxxYIkjbMBzSvdeG2fTge-/edit"},
+{nombre:"acta de destitución",link:"https://docs.google.com/document/d/1il11xiVw6pgSuEByISuL-dSPOQq9NrJw/edit"},
+{nombre:"acta de fallecimiento",link:"https://docs.google.com/document/d/1QRkb-YnWck8Eu9mCbo_72nfvvmVRdrrz/edit"},
+{nombre:"acta de permuta",link:"https://docs.google.com/document/d/1bUhpXMW4tg10XTPk6fkAUjx5wawzA_Ya/edit"},
 
 /* FORMATOS */
 
-{nombre:"carta de renuncia",link:"https://docs.google.com/document/d/13pBzKYKDhdU6pZKR-Z6oXTwVcldWbyp1/edit",tipo:"word"},
-{nombre:"cédula de notificación",link:"https://docs.google.com/document/d/1mm6VPfpF1Up7sCjvpPb17z1gECr5T7Qj/edit",tipo:"word"},
-{nombre:"desistimiento formato",link:"https://docs.google.com/document/d/17gEmneIQargbcxKyIDjENRxr9GAg4JHp/edit",tipo:"word"},
-{nombre:"oficio jubilación",link:"https://docs.google.com/document/d/12QEl5ErYc1TCy4ixPWPsFEkEbP4iO5X1/edit",tipo:"word"},
-{nombre:"oficio renuncia traslado",link:"https://docs.google.com/document/d/1KXgPWE8oG3n_nC2JPD2bhnfbui2xlaQN/edit",tipo:"word"},
+{nombre:"carta de renuncia",link:"https://docs.google.com/document/d/13pBzKYKDhdU6pZKR-Z6oXTwVcldWbyp1/edit"},
+{nombre:"cédula de notificación",link:"https://docs.google.com/document/d/1mm6VPfpF1Up7sCjvpPb17z1gECr5T7Qj/edit"},
+{nombre:"desistimiento formato",link:"https://docs.google.com/document/d/17gEmneIQargbcxKyIDjENRxr9GAg4JHp/edit"},
+{nombre:"oficio jubilación",link:"https://docs.google.com/document/d/12QEl5ErYc1TCy4ixPWPsFEkEbP4iO5X1/edit"},
+{nombre:"oficio renuncia traslado",link:"https://docs.google.com/document/d/1KXgPWE8oG3n_nC2JPD2bhnfbui2xlaQN/edit"},
 
 /* EXCEL */
 
-{nombre:"formulario bloque de pago",link:"https://docs.google.com/spreadsheets/d/1MjCa5Vx3jQJZEc8wNJF70ZlMv3iiWOLI/edit",tipo:"excel"},
-{nombre:"solicitud de nomina adicional",link:"https://docs.google.com/spreadsheets/d/1Y2eyHZA6Z53ya0G4W5qJOLR-ZOmTGN7e/edit",tipo:"excel"},
-
+{nombre:"formulario bloque de pago",link:"https://docs.google.com/spreadsheets/d/1MjCa5Vx3jQJZEc8wNJF70ZlMv3iiWOLI/edit"},
+{nombre:"solicitud de nomina adicional",link:"https://docs.google.com/spreadsheets/d/1Y2eyHZA6Z53ya0G4W5qJOLR-ZOmTGN7e/edit"},
 
 /* LEYES */
 
-{nombre:"constitución política de guatemala",link:"https://drive.google.com/file/d/1qdnuwvtyLph1clOCt2YDGmn6W50NzsaA/view",tipo:"pdf"},
-{nombre:"ley educación nacional",link:"https://drive.google.com/file/d/1GCOXCQOViJipSO6oL7eOI23A4rCOViCP/view",tipo:"pdf"},
-{nombre:"ley servicio civil",link:"https://drive.google.com/file/d/1GNtbYtjS0HWzI1ueWrMy2qa-DQGlEqcT/view",tipo:"pdf"},
-{nombre:"decreto 16-2017 alimentación escolar",link:"https://drive.google.com/file/d/1aSDgP3hNEhg6N_Otk-qGGzC2OU4mGGzc/view",tipo:"pdf"},
-{nombre:"decreto 1485",link:"https://drive.google.com/file/d/1ie_GkmXmgIfRmrveomJ3Uns9EdYdaaEn/view",tipo:"pdf"},
+{nombre:"constitución política de guatemala",link:"https://drive.google.com/file/d/1qdnuwvtyLph1clOCt2YDGmn6W50NzsaA/view"},
+{nombre:"ley educación nacional",link:"https://drive.google.com/file/d/1GCOXCQOViJipSO6oL7eOI23A4rCOViCP/view"},
+{nombre:"ley servicio civil",link:"https://drive.google.com/file/d/1GNtbYtjS0HWzI1ueWrMy2qa-DQGlEqcT/view"},
+{nombre:"decreto 16-2017 alimentación escolar",link:"https://drive.google.com/file/d/1aSDgP3hNEhg6N_Otk-qGGzC2OU4mGGzc/view"},
+{nombre:"decreto 1485",link:"https://drive.google.com/file/d/1ie_GkmXmgIfRmrveomJ3Uns9EdYdaaEn/view"},
 
 /* PROTOCOLOS */
 
-{nombre:"protocolo casos de violencia 2023",link:"https://drive.google.com/file/d/1qbex9rSxHTfdkomlqm73FKkG1TgZl71-/view",tipo:"pdf"},
-{nombre:"rutas para el abordaje de violencia",link:"https://drive.google.com/file/d/1oMo8R3DXINx_GrNQbpe_prQO7eBgdTvI/view",tipo:"pdf"},
+{nombre:"protocolo casos de violencia 2023",link:"https://drive.google.com/file/d/1qbex9rSxHTfdkomlqm73FKkG1TgZl71-/view"},
+{nombre:"rutas para el abordaje de violencia",link:"https://drive.google.com/file/d/1oMo8R3DXINx_GrNQbpe_prQO7eBgdTvI/view"},
 
 /* PACTO */
 
-{nombre:"pacto colectivo mineduc steg",link:"https://drive.google.com/file/d/13zhRWFTSBIUxvjSvhFGiD8lzSKqF_YdJ/view",tipo:"pdf"}
+{nombre:"pacto colectivo mineduc steg",link:"https://drive.google.com/file/d/13zhRWFTSBIUxvjSvhFGiD8lzSKqF_YdJ/view"}
 
 ];
+
 
 // BUSCAR DOCUMENTO
 
 function buscarDocumento(texto){
 
-texto=texto.toLowerCase();
+texto = texto.toLowerCase();
 
 for(let doc of documentos){
 
@@ -699,7 +657,7 @@ if(texto.includes(doc.nombre)){
 
 return `
 📄 <b>${doc.nombre}</b><br>
-<a href="${doc.link}" target="_blank">Descargar documento</a>
+<a href="${doc.link}" target="_blank">Abrir documento</a>
 `;
 
 }
@@ -715,27 +673,27 @@ return null;
 
 async function responder(){
 
-let input=document.getElementById("userInput").value.trim();
-let mensajes=document.getElementById("messages");
+let input = document.getElementById("userInput").value.trim();
+let mensajes = document.getElementById("messages");
 
 if(input==="") return;
 
-mensajes.innerHTML+="<p><b>Tú:</b> "+input+"</p>";
+mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
 
 document.getElementById("userInput").value="";
 
-let texto=input.toLowerCase();
+let texto = input.toLowerCase();
 
 
 // SALUDO
 
 if(texto.includes("hola")){
 
-mensajes.innerHTML+=`<p><b>Asistente:</b>
+mensajes.innerHTML += `<p><b>Asistente:</b>
 ¡Hola! 👋<br><br>
 
 Soy el <b>Asistente Virtual de la Coordinación Distrital 20-011</b>.<br>
-Este sistema utiliza <b>Inteligencia Artificial</b> para ayudarte a encontrar documentos.<br><br>
+Este sistema utiliza <b>Inteligencia Artificial</b> para ayudarte a encontrar documentos administrativos educativos.<br><br>
 
 📂 Documentos disponibles:<br>
 📄 Acciones de Personal<br>
@@ -759,11 +717,12 @@ return;
 
 // BUSCAR DOCUMENTO
 
-let doc=buscarDocumento(input);
+let doc = buscarDocumento(input);
 
 if(doc){
 
-mensajes.innerHTML+="<p><b>Asistente:</b><br>"+doc+"</p>";
+mensajes.innerHTML += "<p><b>Asistente:</b><br>"+doc+"</p>";
+mensajes.scrollTop = mensajes.scrollHeight;
 return;
 
 }
@@ -773,10 +732,10 @@ return;
 
 try{
 
-let respuesta=await fetch("https://openrouter.ai/api/v1/chat/completions",{
+let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
 method:"POST",
 headers:{
-"Authorization":"Bearer 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",
+"Authorization":"Bearer TU_API_KEY",
 "Content-Type":"application/json"
 },
 body:JSON.stringify({
@@ -787,20 +746,20 @@ messages:[
 })
 });
 
-let data=await respuesta.json();
+let data = await respuesta.json();
 
-let mensajeIA=data.choices[0].message.content;
+let mensajeIA = data.choices[0].message.content;
 
-mensajes.innerHTML+="<p><b>Asistente:</b> "+mensajeIA+"</p>";
+mensajes.innerHTML += "<p><b>Asistente:</b> "+mensajeIA+"</p>";
 
 }
 catch(error){
 
-mensajes.innerHTML+="<p><b>Asistente:</b> Error al conectar con la IA.</p>";
+mensajes.innerHTML += "<p><b>Asistente:</b> Error al conectar con la IA.</p>";
 
 }
 
-mensajes.scrollTop=mensajes.scrollHeight;
+mensajes.scrollTop = mensajes.scrollHeight;
 
 }
 
@@ -816,13 +775,4 @@ responder();
 
 });
 
-
-
-
-
-
-
-
-
-
-
+</script>
