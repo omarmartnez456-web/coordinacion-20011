@@ -577,12 +577,14 @@ console.log("chat cargado");
 // ABRIR Y CERRAR CHAT
 function toggleChat(){
 
+console.log("boton presionado");
+
 let chat = document.getElementById("chatbot");
 
-if(chat.style.display === "flex"){
-chat.style.display = "none";
-}else{
+if(chat.style.display === "none" || chat.style.display === ""){
 chat.style.display = "flex";
+}else{
+chat.style.display = "none";
 }
 
 }
@@ -1009,7 +1011,8 @@ O escribe el nombre del documento que deseas buscar.
 `;
 
 mensajes.scrollTop = mensajes.scrollHeight;
-
+}
+ 
 // ===============================
 // ENTER PARA ENVIAR
 // ===============================
@@ -1023,4 +1026,3 @@ responder();
 
 });
 </script>
-
