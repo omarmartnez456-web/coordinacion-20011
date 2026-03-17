@@ -664,18 +664,18 @@ responder();
 
 
 // ABRIR Y CERRAR CHAT
-
 function toggleChat(){
 
 let chat = document.getElementById("chatbot");
 
-if(chat.style.display==="none" || chat.style.display===""){
-chat.style.display="block";
-}else{
+if(chat.style.display==="block"){
 chat.style.display="none";
+}else{
+chat.style.display="block";
 }
 
 }
+
 
 const documentos = [
 
@@ -735,6 +735,7 @@ const documentos = [
 
 ];
 
+// BUSCAR DOCUMENTO
 function buscarDocumento(texto){
 
 texto = texto.toLowerCase();
@@ -742,42 +743,87 @@ texto = texto.toLowerCase();
 for(let doc of documentos){
 
 if(texto.includes(doc.nombre)){
-
 return `
-📄 ${doc.nombre}
-
-<a href="${doc.link}" target="_blank">
-Descargar documento
-</a>
+📄 <b>${doc.nombre}</b><br>
+<a href="${doc.link}" target="_blank">Descargar documento</a>
 `;
-
 }
 
 }
 
-return "No encontré ese documento. Intenta escribir el nombre.";
+return null;
 }
 
-function enviarPregunta(){
 
-let pregunta = document.getElementById("userInput").value;
+// ENVIAR MENSAJE
+async function responder(){
 
-let respuesta = buscarDocumento(pregunta);
+let input = document.getElementById("userInput").value.trim();
+let mensajes = document.getElementById("messages");
 
-document.getElementById("chat").innerHTML += `
-<div class="usuario">${pregunta}</div>
-<div class="ia">${respuesta}</div>
-`;
+if(input==="") return;
+
+mensajes.innerHTML += "<p><b>Tú:</b> "+input+"</p>";
 
 document.getElementById("userInput").value="";
 
-document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+
+// BUSCAR DOCUMENTO
+let doc = buscarDocumento(input);
+
+if(doc){
+mensajes.innerHTML += "<p><b>Asistente:</b><br>"+doc+"</p>";
+return;
+}
+
+
+// RESPUESTA IA
+
+try{
+
+let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
+method:"POST",
+headers:{
+"Authorization":"Bearer TU_API_KEY",
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+model:"openai/gpt-3.5-turbo",
+messages:[
+{role:"user",content:input}
+]
+})
+});
+
+let data = await respuesta.json();
+
+let mensajeIA = data.choices[0].message.content;
+
+mensajes.innerHTML += "<p><b>Asistente:</b> "+mensajeIA+"</p>";
+
+}
+catch(error){
+
+mensajes.innerHTML += "<p><b>Asistente:</b> Error al conectar con la IA.</p>";
+
+}
+
+mensajes.scrollTop = mensajes.scrollHeight;
 
 }
 
 
+// ENTER PARA ENVIAR
+document.getElementById("userInput").addEventListener("keypress", function(event){
 
+if(event.key==="Enter"){
+event.preventDefault();
+responder();
+}
 
+});
+
+</script>
 
 
 
