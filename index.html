@@ -802,7 +802,6 @@ const documentos = [
 
 ];
 
-
 // BUSCAR DOCUMENTO
 
 function buscarDocumento(texto){
@@ -880,258 +879,9 @@ return;
 }
 
 
-// BUSCAR DOCUMENTO
-
-let doc = buscarDocumento(input);
-
-if(doc){
-
-mensajes.innerHTML += "<p><b>Asistente:</b><br>"+doc+"</p>";
-mensajes.scrollTop = mensajes.scrollHeight;
-return;
-
-}
-
-
-// IA
-
-try{
-
-let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
-method:"POST",
-headers:{
-"Authorization":"Bearer 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",
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-model:"openai/gpt-3.5-turbo",
-messages:[
-{role:"user",content:input}
-]
-})
-});
-
-let data = await respuesta.json();
-
-let mensajeIA = data.choices[0].message.content;
-
-mensajes.innerHTML += "<p><b>Asistente:</b> "+mensajeIA+"</p>";
-
-}
-catch(error){
-
-mensajes.innerHTML += "<p><b>Asistente:</b> Error al conectar con la IA.</p>";
-
-}
-
-mensajes.scrollTop = mensajes.scrollHeight;
-
-}
-
-
-// ENTER PARA ENVIAR
-
-document.getElementById("userInput").addEventListener("keypress",function(event){
-
-if(event.key==="Enter"){
-event.preventDefault();
-responder();
-}
-
-});
-  
-  // ===============================
-// ACCIONES DE PERSONAL
 // ===============================
-
-function listarAcciones(){
-
-let lista = documentos.filter(doc => doc.categoria === "acciones");
-
-let html = `<p><b>📂 ACCIONES DE PERSONAL</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
-
-return html;
-
-}
-  // ===============================
-// ACTAS DE ENTREGA
-// ===============================
-
-function listarActasEntrega(){
-
-let lista = documentos.filter(doc => doc.categoria === "actas_entrega");
-
-let html = `<p><b>📂 ACTAS DE ENTREGA</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
-
-return html;
-
-}
-  // ===============================
-// ACTAS DE TOMA DE POSESIÓN
-// ===============================
-
-function listarActasPosesion(){
-
-let lista = documentos.filter(doc => doc.categoria === "actas_posesion");
-
-let html = `<p><b>📂 ACTAS DE TOMA DE POSESIÓN</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
-
-return html;
-
-}
-  // ===============================
-// ACUERDOS MINISTERIALES
-// ===============================
-
-function listarAcuerdos(){
-
-let lista = documentos.filter(doc => doc.categoria === "acuerdos");
-
-let html = `<p><b>📂 ACUERDOS MINISTERIALES</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre del documento para abrirlo.</p>`;
-
-return html;
-
-}
-  // ===============================
-// ENTREGAS DEFINITIVAS
-// ===============================
-
-function listarEntregasDefinitivas(){
-
-let lista = documentos.filter(doc => doc.categoria === "entregas_definitivas");
-
-let html = `<p><b>📂 ENTREGAS DEFINITIVAS</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
-
-return html;
-
-}
-  // ===============================
-// FORMATOS
-// ===============================
-
-function listarFormatos(){
-
-let lista = documentos.filter(doc => doc.categoria === "formatos");
-
-let html = `<p><b>📂 FORMATOS DISPONIBLES</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre del documento para descargarlo.</p>`;
-
-return html;
-
-}
-  // ===============================
-// LEYES
-// ===============================
-
-function listarLeyes(){
-
-let lista = documentos.filter(doc => doc.categoria === "leyes");
-
-let html = `<p><b>📂 LEYES Y NORMATIVAS</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre de la ley para abrir el documento.</p>`;
-
-return html;
-
-}
-  // ===============================
-// PACTO COLECTIVO
-// ===============================
-
-function listarPacto(){
-
-let lista = documentos.filter(doc => doc.categoria === "pacto");
-
-let html = `<p><b>📂 PACTO COLECTIVO</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre del documento para abrirlo.</p>`;
-
-return html;
-
-}
-  // ===============================
-// PROTOCOLOS
-// ===============================
-
-function listarProtocolos(){
-
-let lista = documentos.filter(doc => doc.categoria === "protocolos");
-
-let html = `<p><b>📂 PROTOCOLOS</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre del documento para abrirlo.</p>`;
-
-return html;
-
-}
-  // ===============================
-// REGLAMENTOS
-// ===============================
-
-function listarReglamentos(){
-
-let lista = documentos.filter(doc => doc.categoria === "reglamentos");
-
-let html = `<p><b>📂 REGLAMENTOS</b><br><br>`;
-
-lista.forEach(doc=>{
-html += `📄 ${doc.nombre}<br>`;
-});
-
-html += `<br>Escribe el nombre del documento para abrirlo.</p>`;
-
-return html;
-
-}
-  
 // MOSTRAR SECCIONES DE DOCUMENTOS
+// ===============================
 
 if(texto.includes("acciones")){
 mensajes.innerHTML += listarAcciones();
@@ -1184,3 +934,66 @@ return;
 }
 
 
+// ===============================
+// BUSCAR DOCUMENTO
+// ===============================
+
+let doc = buscarDocumento(input);
+
+if(doc){
+
+mensajes.innerHTML += "<p><b>Asistente:</b><br>"+doc+"</p>";
+mensajes.scrollTop = mensajes.scrollHeight;
+return;
+
+}
+
+
+// ===============================
+// IA
+// ===============================
+
+try{
+
+let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
+method:"POST",
+headers:{
+"Authorization":"Bearer TU_API_KEY",
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+model:"openai/gpt-3.5-turbo",
+messages:[
+{role:"user",content:input}
+]
+})
+});
+
+let data = await respuesta.json();
+
+let mensajeIA = data.choices[0].message.content;
+
+mensajes.innerHTML += "<p><b>Asistente:</b> "+mensajeIA+"</p>";
+
+}
+catch(error){
+
+mensajes.innerHTML += "<p><b>Asistente:</b> Error al conectar con la IA.</p>";
+
+}
+
+mensajes.scrollTop = mensajes.scrollHeight;
+
+}
+
+
+// ENTER PARA ENVIAR
+
+document.getElementById("userInput").addEventListener("keypress",function(event){
+
+if(event.key==="Enter"){
+event.preventDefault();
+responder();
+}
+
+});
