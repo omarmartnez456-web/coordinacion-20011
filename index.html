@@ -572,3 +572,455 @@ Asistente IA
 
 <script>
 
+// ABRIR Y CERRAR CHAT
+function toggleChat(){
+
+let chat = document.getElementById("chatbot");
+
+if(chat.style.display==="block"){
+chat.style.display="none";
+}else{
+chat.style.display="block";
+}
+
+}
+
+
+const documentos = [
+ 
+
+/* ACCIONES DE PERSONAL */
+
+{nombre:"ascenso", categoria:"acciones", link:"https://docs.google.com/document/d/1ecT_K5yQSEh__TLbOGv1ArN5LOOtGhj-/edit"},
+{nombre:"interinatos", categoria:"acciones", link:"https://docs.google.com/document/d/1t9ckeZ_aMwATsu5Z7u0gGuChRgHhj0Kf/edit"},
+{nombre:"licencia con o sin goce de salario", categoria:"acciones", link:"https://docs.google.com/document/d/13o2xVy0Vd5E_4WLltlHQa6EavDLuytgQ/edit"},
+{nombre:"permuta", categoria:"acciones", link:"https://docs.google.com/document/d/1Go5UBN0lAsSUfC9UxW8Bwnr9Q0tchoaJ/edit"},
+{nombre:"primer ingreso", categoria:"acciones", link:"https://docs.google.com/document/d/1MvAYG-LHRywfLV4Tb_GZqZLSLcaNXLHP/edit"},
+{nombre:"reingreso", categoria:"acciones", link:"https://docs.google.com/document/d/1LzRLx0Jf89Xm3ueALM9Gx0gBHEQbB0uV/edit"},
+{nombre:"reinstalacion", categoria:"acciones", link:"https://docs.google.com/document/d/1o3h-sLVjdWDhHGhxpD7anwFOqaRMEkdc/edit"},
+{nombre:"suspension disciplinario", categoria:"acciones", link:"https://docs.google.com/document/d/1Oo8XRPlHQ9hA5ePFOgoSzdovldMmY70f/edit"},
+{nombre:"suspensiones igss", categoria:"acciones", link:"https://docs.google.com/document/d/1ZHJ57HMsnn1kVvovuFTh6IZ_mnQq5dx8/edit"},
+{nombre:"traslado", categoria:"acciones", link:"https://docs.google.com/document/d/1xnlsEHuRQuEEHNqFKZbAPrODX0Y-0Pcw/edit"}
+
+/* ACTAS DE ENTREGA */
+
+{nombre:"acta de supervision disciplinaria entrega del puesto", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1Tlq8Ksz8_hLwGTARDVs1_EaJIhBnZYee/edit"},
+{nombre:"acta de fallecimiento", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1QRkb-YnWck8Eu9mCbo_72nfvvmVRdrrz/edit"},
+{nombre:"acta de jubilacion", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1sTdvWFBwoVw5XY6jxO-KnbwKBwRrx34W/edit"},
+{nombre:"acta de permuta", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1bUhpXMW4tg10XTPk6fkAUjx5wawzA_Ya/edit"},
+{nombre:"acta de renuncia", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1_Z5M4ddnr0Ffmi6TreHdl-kFAIMz8aFw/edit"},
+{nombre:"acta de traslado", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1sdITsiagR-nxxYIkjbMBzSvdeG2fTge-/edit"},
+{nombre:"acta de destitucion", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1il11xiVw6pgSuEByISuL-dSPOQq9NrJw/edit"},
+{nombre:"acta entrega de interinato", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1bhzYYHHTf134UZLBaMGGpazR8tKKgv7m/edit"},
+{nombre:"acta entrega por licencia", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1KD31XSsSb5k8I82vo0v3GG9BpYCo78Fb/edit"},
+{nombre:"acta modelo de renuncia por ascenso", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1k8Bw_kFCYIzb1Kv-Oa0ScgJqY7bIVGah/edit"},
+{nombre:"acta por suspension de igss", categoria:"actas_entrega", link:"https://docs.google.com/document/d/16R-cDFraXaglLWflcBeqdj7DTkiJxSmr/edit"},
+{nombre:"acta renuncia por invalidez", categoria:"actas_entrega", link:"https://docs.google.com/document/d/1RmwO1UekePdtB9IwyNpUZuuYbDj5pPZE/edit"},
+{nombre:"acta interinato dos resoluciones", categoria:"actas_entrega", link:"https://docs.google.com/document/d/11yoq4sjkg2VUYDdfk6EXUl_7f9TY-X2g/edit"},
+
+/* ACTAS DE TOMA DE POSESION */
+
+{nombre:"acta de alta igss", categoria:"actas_posesion", link:"https://docs.google.com/document/d/1xFf9XiUdSwu-Z-BrX_iyql3pl1Km3Dpx/edit"},
+
+{nombre:"acta de suspension disciplinaria", categoria:"actas_posesion", link:"https://docs.google.com/document/d/1IeYsgFVQevP5kkOjtLy2BQe-F1q7GKG7/edit"},
+
+{nombre:"acta interinato", categoria:"actas_posesion", link:"https://docs.google.com/document/d/1OwOeosAmBaGs66r5me-ZyH6q8EGYoyUL/edit"},
+
+{nombre:"acta modelo de primer ingreso", categoria:"actas_posesion", link:"https://docs.google.com/document/d/1habFuamuQM5-m0BnWcMQMOrfju7ROsYG/edit"},
+
+{nombre:"acta modelo de reingreso", categoria:"actas_posesion", link:"https://docs.google.com/document/d/1v5MrIGce3OKrPGX5jmmcyoFRGjvWE4G7/edit"},
+
+{nombre:"acta permuta toma de posesion", categoria:"actas_posesion", link:"https://docs.google.com/document/d/1g-xZnnObZPTmvLSNdHeVYMI_AW6qrRME/edit"},
+
+{nombre:"acta toma por ascenso", categoria:"actas_posesion", link:"https://docs.google.com/document/d/12DDoMZ0IKhv4Av0FeabhgJ6tQOftKrd2/edit"},
+
+{nombre:"acta de traslado toma de posesion", categoria:"actas_posesion", link:"https://docs.google.com/document/d/1mhL8SZH8NVyz8iooBZgApvJopO4tBeRY/edit"},
+  
+/* ACUERDOS MINISTERIALES */
+
+{nombre:"acuerdo director liberado", categoria:"acuerdos", link:"https://drive.google.com/file/d/165vOGtDtssa5xBaeMAd1b7D7k4E_VwOh/view"},
+
+{nombre:"acuerdo ministerial 9771-2003", categoria:"acuerdos", link:"https://drive.google.com/file/d/10IS95hbUZQ5LEEQVulsB-zUAjtZns58P/view"},
+
+{nombre:"acuerdo ministerial 1171-2010 reglamento de evaluacion", categoria:"acuerdos", link:"https://drive.google.com/file/d/1uzt-BqiF1Q-11N5XMyTs5YrRE3CeLPMb/view"},
+
+{nombre:"acuerdo ministerial 1500-2019 normativa disciplinaria", categoria:"acuerdos", link:"https://drive.google.com/file/d/15gNviFA3PwSvFjqIPykW6Cfbe51Yq8ex/view"},
+
+{nombre:"acuerdo ministerial 1505-2013", categoria:"acuerdos", link:"https://drive.google.com/file/d/1Xtdky-0_3lpZ79Nk35r0Wf7S4SRStjKh/view"},
+
+{nombre:"acuerdo ministerial 927 reglamento jornadas de trabajo", categoria:"acuerdos", link:"https://drive.google.com/file/d/1VcfiP8siJsBiedgmzSS8wgpeLu030N00/view"},
+
+{nombre:"calendario escolar", categoria:"acuerdos", link:"https://drive.google.com/file/d/1UeCZ0Y6m2BPQXcweXLy6u-_HwejdZrb4/view"},
+
+{nombre:"normativo de convivencia 01-2011", categoria:"acuerdos", link:"https://drive.google.com/file/d/1E0yWlq3wqxvL1Gc7Mx9L7vtnd6F_yTtM/view"},
+  
+/* ENTREGAS DEFINITIVAS */
+
+{nombre:"entrega definitiva fallecimiento", categoria:"entregas_definitivas", link:"https://docs.google.com/document/d/1aSH0PNNiDX-0xthQ4NNyjg01PTkr7pkN/export?format=docx"},
+
+{nombre:"entrega definitiva invalidez", categoria:"entregas_definitivas", link:"https://docs.google.com/document/d/1iSJweHA1wZ8Av5KIigwfYeZ_SwD7C8C3/export?format=docx"},
+
+{nombre:"entrega definitiva jubilacion", categoria:"entregas_definitivas", link:"https://docs.google.com/document/d/1uisi5JdT0rcsiQ_HbVZ8S35rIOVfICbI/export?format=docx"},
+
+{nombre:"entrega definitiva renuncia", categoria:"entregas_definitivas", link:"https://docs.google.com/document/d/1gnKnKR4A6q4hZf6-68iuw448yc7gFAXi/export?format=docx"},
+
+{nombre:"entrega definitiva rescision de contrato", categoria:"entregas_definitivas", link:"https://docs.google.com/document/d/1g76h9IpatdmQ8H6pau3w8KCP87K_DCbv/export?format=docx"},
+  
+/* FORMATOS */
+
+{nombre:"capacitacion actualizada", categoria:"formatos", link:"https://docs.google.com/presentation/d/1RASrSMj-vnufgGTakNFwb55IrstZbTUG/export/pdf"},
+
+{nombre:"carta de renuncia 021 a 011", categoria:"formatos", link:"https://docs.google.com/document/d/13pBzKYKDhdU6pZKR-Z6oXTwVcldWbyp1/export?format=docx"},
+
+{nombre:"cedula de notificacion", categoria:"formatos", link:"https://docs.google.com/document/d/1mm6VPfpF1Up7sCjvpPb17z1gECr5T7Qj/export?format=docx"},
+
+{nombre:"complemento de pago por pacto colectivo", categoria:"formatos", link:"https://drive.google.com/file/d/1-qKsnrSfYVgSjskmWgdHH7Q4p42s9en5/view"},
+
+{nombre:"corte de salario", categoria:"formatos", link:"https://docs.google.com/document/d/1K0_z771HmgsVgQJ9dwT61nzycaUQnxfI/export?format=docx"},
+
+{nombre:"desistimiento formato", categoria:"formatos", link:"https://docs.google.com/document/d/17gEmneIQargbcxKyIDjENRxr9GAg4JHp/export?format=docx"},
+
+{nombre:"ejemplo constancia finiquito asistencia faltas al servicio", categoria:"formatos", link:"https://docs.google.com/document/d/1AFzBzTKGHfynyDWk_hEoA73rkMxjiqX_/export?format=docx"},
+
+{nombre:"ejemplo de renuncia 5 meses del oficio", categoria:"formatos", link:"https://docs.google.com/document/d/1ng0gn_F2G7vuglj5wPEWIwq5eyuFvA4C/export?format=docx"},
+
+{nombre:"formulario bloque de pago", categoria:"formatos", link:"https://docs.google.com/spreadsheets/d/1MjCa5Vx3jQJZEc8wNJF70ZlMv3iiWOLI/export?format=xlsx"},
+
+{nombre:"instructivo boleta de reingreso", categoria:"formatos", link:"https://docs.google.com/document/d/1Fc_uGn4AI2PY4_Re3-y-X3i9koxIAeHQ/export?format=docx"},
+
+{nombre:"oficio renuncia por ascenso", categoria:"formatos", link:"https://docs.google.com/document/d/1MSWTzj1_4_ZC1_y6O-gplalQ5lOxoB2J/export?format=docx"},
+
+{nombre:"oficio jubilacion", categoria:"formatos", link:"https://docs.google.com/document/d/12QEl5ErYc1TCy4ixPWPsFEkEbP4iO5X1/export?format=docx"},
+
+{nombre:"oficio renuncia traslado", categoria:"formatos", link:"https://docs.google.com/document/d/1KXgPWE8oG3n_nC2JPD2bhnfbui2xlaQN/export?format=docx"},
+
+{nombre:"oficio solicitud complemento pacto colectivo", categoria:"formatos", link:"https://docs.google.com/document/d/1b4Zggp9AWY0jrnhI3Hg28bmhh8AcHN2T/export?format=docx"},
+
+{nombre:"oficio solicitud de solvencia", categoria:"formatos", link:"https://docs.google.com/document/d/1klzdtRk5RYKVeorM2OOtkNjHwKXluGhl/export?format=docx"},
+
+{nombre:"requisitos para cambio de cuenta bancaria", categoria:"formatos", link:"https://docs.google.com/document/d/1p_ZVP2vgs8sgoBbdujGy35JcABjl--SA/export?format=docx"},
+
+{nombre:"solicitud de cambio de cuenta", categoria:"formatos", link:"https://docs.google.com/document/d/1toYoUCzEJL_pQhHnkD495ylgQugaoR9m/export?format=docx"},
+
+{nombre:"solicitud de nomina adicional", categoria:"formatos", link:"https://docs.google.com/spreadsheets/d/1Y2eyHZA6Z53ya0G4W5qJOLR-ZOmTGN7e/export?format=xlsx"},
+  
+/* LEYES */
+
+{nombre:"acuerdo ministerial 3764-2018 cnb ciclo basico", categoria:"leyes", link:"https://drive.google.com/file/d/1gxVhaFpVuDEqRkOWy5_jnuFM1B2pBm4e/view"},
+
+{nombre:"acuerdo ministerial 1770-2020 ampliacion evaluacion", categoria:"leyes", link:"https://drive.google.com/file/d/1k9skbNyHIL6x3EqXsJWfLYe1NijAE7sg/view"},
+
+{nombre:"acuerdo 226 gratuidad", categoria:"leyes", link:"https://drive.google.com/file/d/1KteQyp1fvR2hWhYJUGY5QOnvXslmwG3q/view"},
+
+{nombre:"acuerdo 379-2009 pensum bachillerato", categoria:"leyes", link:"https://drive.google.com/file/d/1ZO3fQbU5EPdgeN5dihlnpawO5dcuaGyU/view"},
+
+{nombre:"acuerdo 760-2023 cnb preprimaria", categoria:"leyes", link:"https://drive.google.com/file/d/1QYsITqOypGAyGYprtaF80wSzwW_m3sgm/view"},
+
+{nombre:"acuerdo de convocatoria", categoria:"leyes", link:"https://drive.google.com/file/d/14FqjCraejZbm-SmlfpDDDe58DMRczP9P/view"},
+
+{nombre:"acuerdo gubernativo 13-77 reglamento ley educacion", categoria:"leyes", link:"https://drive.google.com/file/d/1OSUhmx3QXZDd3pCJVrVctxlwwe3m0BPc/view"},
+
+{nombre:"acuerdo ministerial 1171-2010 reglamento evaluacion", categoria:"leyes", link:"https://drive.google.com/file/d/1kPjA4uRwcY329Drm1uzJ8uLajSe_J--5/view"},
+
+{nombre:"acuerdo ministerial 1492 gratuidad", categoria:"leyes", link:"https://drive.google.com/file/d/1c-InCB9pSca0_sikUSq_iIGpg4mCmrKt/view"},
+
+{nombre:"acuerdo ministerial 1500-2019 normativo disciplinario mineduc", categoria:"leyes", link:"https://drive.google.com/file/d/1b4wTV4cuGQC_jJ87Th9S2fxZ38thvDnI/view"},
+
+{nombre:"acuerdo ministerial 2940-2011 reglamento evaluacion areas especificas", categoria:"leyes", link:"https://drive.google.com/file/d/1ukSK--SfKXiZmdWTH2bQ-owif-CMMUUu/view"},
+
+{nombre:"acuerdo ministerial 3956-2022 lineamientos recuperacion", categoria:"leyes", link:"https://drive.google.com/file/d/1wVPrw0QgP2pvTX6zAlBPz_q2Almm1rtG/view"},
+
+{nombre:"acuerdo ministerial 3833-2019 cnb primaria", categoria:"leyes", link:"https://drive.google.com/file/d/1PxV7Ht4HQL9kt8OjrMzsxvkYBXBORCyB/view"},
+
+{nombre:"acuerdo gubernativo 3-70 archivos escolares", categoria:"leyes", link:"https://drive.google.com/file/d/1d5HY_vOJw5mhQ6YfneBuR02sXK9PQcgf/view"},
+
+{nombre:"acuerdo ministerial 1502-2013", categoria:"leyes", link:"https://drive.google.com/file/d/1BCgs031RI5WI2iOb_RKZsotu7eAlqkcr/view"},
+
+{nombre:"acuerdo ministerial 146-2023 codigo de etica mineduc", categoria:"leyes", link:"https://drive.google.com/file/d/16uoC4ppxcaaa1OhbKMEGEYybTXhXMcO8/view"},
+
+{nombre:"acuerdo 436-2008 modificacion reglamento evaluacion", categoria:"leyes", link:"https://drive.google.com/file/d/15B9K880tUZ0StBu-SQCU0aNWbp8o-He3/view"},
+
+{nombre:"codigo de etica organismo ejecutivo acuerdo 62-2024", categoria:"leyes", link:"https://drive.google.com/file/d/1s9NmJy6IN8BFXnyzUM0KUCbbwuKVPS03/view"},
+
+{nombre:"constitucion politica de la republica de guatemala", categoria:"leyes", link:"https://drive.google.com/file/d/1qdnuwvtyLph1clOCt2YDGmn6W50NzsaA/view"},
+
+{nombre:"decreto 16-2017 ley de alimentacion escolar", categoria:"leyes", link:"https://drive.google.com/file/d/1aSDgP3hNEhg6N_Otk-qGGzC2OU4mGGzc/view"},
+
+{nombre:"decreto 58-98 ley de edificios escolares", categoria:"leyes", link:"https://drive.google.com/file/d/13N-qkgrU6wCX_xFUNBa8jL9NKPtDtE6u/view"},
+
+{nombre:"decreto 1485", categoria:"leyes", link:"https://drive.google.com/file/d/1ie_GkmXmgIfRmrveomJ3Uns9EdYdaaEn/view"},
+
+{nombre:"decreto 1748 ley de servicio civil", categoria:"leyes", link:"https://drive.google.com/file/d/1GNtbYtjS0HWzI1ueWrMy2qa-DQGlEqcT/view"},
+
+{nombre:"ley educacion nacional", categoria:"leyes", link:"https://drive.google.com/file/d/1GCOXCQOViJipSO6oL7eOI23A4rCOViCP/view"},
+
+{nombre:"procesos gestion de recursos humanos", categoria:"leyes", link:"https://drive.google.com/file/d/1kno2lhxxYGVmmQsJ8ZQhVk9UkeHa7jJs/view"},
+
+{nombre:"manual del reglamento de evaluacion", categoria:"leyes", link:"https://drive.google.com/file/d/1Gx9Jnp0CY-FfMsCfYOCx-LVOljBv2qZC/view"},
+
+{nombre:"normativa de convivencia", categoria:"leyes", link:"https://drive.google.com/file/d/17Ldctl54QGqNhGkaDy3nlK_KKAVPwpXo/view"},
+
+{nombre:"reglamento de evaluacion 2692-2007", categoria:"leyes", link:"https://drive.google.com/file/d/1EBr4_835vx3vyPGCC9u5g9O8Svs_o_bZ/view"},
+
+{nombre:"reglamento de la ley de servicio civil", categoria:"leyes", link:"https://drive.google.com/file/d/1OiMc_qYlRbCZRcYFjCQsNuN0cPaNT1vR/view"},
+
+/* PACTO COLECTIVO */
+
+{nombre:"pacto colectivo condiciones de trabajo mineduc steg", categoria:"pacto", link:"https://drive.google.com/file/d/13zhRWFTSBIUxvjSvhFGiD8lzSKqF_YdJ/view"},
+
+/* PROTOCOLOS */
+
+{nombre:"protocolo casos de violencia 2023", categoria:"protocolos", link:"https://drive.google.com/file/d/1qbex9rSxHTfdkomlqm73FKkG1TgZl71-/view"},
+
+{nombre:"rutas para el abordaje de casos derivados de violencia fisica psicologica y sexual", categoria:"protocolos", link:"https://drive.google.com/file/d/1oMo8R3DXINx_GrNQbpe_prQO7eBgdTvI/view"},
+
+/* REGLAMENTOS */
+
+{nombre:"guia redaccion documentos comision casos de violencia", categoria:"reglamentos", link:"https://drive.google.com/file/d/1VmsWW5s1Vofc23pDcieVmZeh_rmfJ6XK/view"}
+];
+
+// ===============================
+// BUSCAR DOCUMENTO MEJORADO
+// ===============================
+
+function buscarDocumento(texto){
+
+texto = texto.toLowerCase();
+
+let resultados = documentos.filter(doc =>
+doc.nombre.toLowerCase().includes(texto)
+);
+
+if(resultados.length > 0){
+
+let html = `
+<div style="margin-top:10px">
+📄 <b>Documentos encontrados</b><br><br>
+`;
+
+resultados.forEach(doc => {
+
+html += `
+<div style="margin-bottom:10px;padding:10px;border:1px solid #ddd;border-radius:6px;">
+<b>${doc.nombre.toUpperCase()}</b><br><br>
+
+<a href="${doc.link}" target="_blank"
+style="color:white;background:#2563eb;padding:6px 12px;border-radius:6px;text-decoration:none;">
+📥 Descargar documento
+</a>
+</div>
+`;
+
+});
+
+html += `</div>`;
+
+return html;
+
+}
+
+return null;
+
+}
+
+// ===============================
+// LISTAR CATEGORÍAS MEJORADO
+// ===============================
+
+function listarCategoria(cat,titulo){
+
+let lista = documentos.filter(doc => doc.categoria === cat);
+
+let html = `
+<div style="margin-top:10px">
+<b>📂 ${titulo}</b><br><br>
+`;
+
+lista.forEach(doc=>{
+
+html += `
+<div style="margin-bottom:10px;padding:8px;border:1px solid #ddd;border-radius:6px;">
+📄 <b>${doc.nombre}</b><br><br>
+
+<a href="${doc.link}" target="_blank"
+style="color:white;background:#2563eb;padding:6px 12px;border-radius:6px;text-decoration:none;">
+📥 Descargar
+</a>
+
+</div>
+`;
+
+});
+
+html += "</div>";
+
+return html;
+
+}
+
+// ===============================
+// RESPONDER
+// ===============================
+
+async function responder(){
+
+let input = document.getElementById("userInput").value.trim();
+let mensajes = document.getElementById("messages");
+
+if(input === "") return;
+
+mensajes.innerHTML += "<p><b>Tú:</b> " + input + "</p>";
+
+document.getElementById("userInput").value = "";
+
+let texto = input.toLowerCase();
+
+
+// ===============================
+// SALUDO
+// ===============================
+
+if(
+texto.includes("hola") ||
+texto.includes("buenos dias") ||
+texto.includes("buenas tardes") ||
+texto.includes("buenas noches") ||
+texto.includes("saludos")
+){
+
+mensajes.innerHTML += `
+<p><b>Asistente:</b><br>
+Hola 👋 soy el asistente virtual de la coordinación distrital.<br><br>
+
+Puedes buscar documentos por categoría escribiendo:<br><br>
+
+📂 acciones<br>
+📂 actas entrega<br>
+📂 posesion<br>
+📂 acuerdos<br>
+📂 entregas<br>
+📂 formatos<br>
+📂 leyes<br>
+📂 pacto<br>
+📂 protocolos<br>
+📂 reglamentos<br><br>
+
+O escribe el nombre del documento que deseas buscar.
+</p>
+`;
+
+mensajes.scrollTop = mensajes.scrollHeight;
+return;
+
+}
+
+
+// ===============================
+// MOSTRAR SECCIONES
+// ===============================
+
+if(texto.includes("acciones")){
+mensajes.innerHTML += listarCategoria("acciones","ACCIONES DE PERSONAL");
+return;
+}
+
+if(texto.includes("actas entrega")){
+mensajes.innerHTML += listarCategoria("actas_entrega","ACTAS DE ENTREGA");
+return;
+}
+
+if(texto.includes("posesion")){
+mensajes.innerHTML += listarCategoria("actas_posesion","ACTAS DE TOMA DE POSESIÓN");
+return;
+}
+
+if(texto.includes("formatos")){
+mensajes.innerHTML += listarCategoria("formatos","FORMATOS");
+return;
+}
+
+if(texto.includes("leyes")){
+mensajes.innerHTML += listarCategoria("leyes","LEYES");
+return;
+}
+
+if(texto.includes("protocolos")){
+mensajes.innerHTML += listarCategoria("protocolos","PROTOCOLOS");
+return;
+}
+
+if(texto.includes("acuerdos")){
+mensajes.innerHTML += listarCategoria("acuerdos","ACUERDOS MINISTERIALES");
+return;
+}
+
+if(texto.includes("entregas")){
+mensajes.innerHTML += listarCategoria("entregas_definitivas","ENTREGAS DEFINITIVAS");
+return;
+}
+
+if(texto.includes("pacto")){
+mensajes.innerHTML += listarCategoria("pacto","PACTO COLECTIVO");
+return;
+}
+
+if(texto.includes("reglamentos")){
+mensajes.innerHTML += listarCategoria("reglamentos","REGLAMENTOS");
+return;
+}
+
+// ===============================
+// BUSCAR DOCUMENTO
+// ===============================
+
+let doc = buscarDocumento(texto);
+
+if(doc){
+mensajes.innerHTML += "<p><b>Asistente:</b><br>" + doc + "</p>";
+mensajes.scrollTop = mensajes.scrollHeight;
+return;
+}
+
+
+// ===============================
+// RESPUESTA POR DEFECTO
+// ===============================
+
+mensajes.innerHTML += `
+<p><b>Asistente:</b><br>
+No encontré ese documento.<br><br>
+
+Puedes buscar por categorías como:<br><br>
+
+📂 acciones<br>
+📂 actas entrega<br>
+📂 posesion<br>
+📂 acuerdos<br>
+📂 entregas<br>
+📂 formatos<br>
+📂 leyes<br>
+📂 pacto<br>
+📂 protocolos<br>
+📂 reglamentos<br><br>
+
+O escribe el nombre del documento que deseas buscar.
+</p>
+`;
+
+mensajes.scrollTop = mensajes.scrollHeight;
+
+// ===============================
+// ENTER PARA ENVIAR
+// ===============================
+
+document.getElementById("userInput").addEventListener("keypress", function(event){
+
+if(event.key === "Enter"){
+event.preventDefault();
+responder();
+}
+
+});
+
+
+
