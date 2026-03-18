@@ -808,7 +808,7 @@ const documentos = [
 ];
 
 // ===============================
-// BUSCAR DOCUMENTO MEJORADO
+// BUSCAR DOCUMENTO
 // ===============================
 
 function buscarDocumento(texto){
@@ -852,7 +852,7 @@ return null;
 }
 
 // ===============================
-// LISTAR CATEGORÍAS MEJORADO
+// LISTAR CATEGORIAS
 // ===============================
 
 function listarCategoria(cat,titulo){
@@ -874,7 +874,6 @@ html += `
 style="color:white;background:#2563eb;padding:6px 12px;border-radius:6px;text-decoration:none;">
 📥 Descargar
 </a>
-
 </div>
 `;
 
@@ -902,21 +901,7 @@ mensajes.innerHTML += "<p><b>Tú:</b> " + input + "</p>";
 document.getElementById("userInput").value = "";
 
 let texto = input.toLowerCase();
-  let doc = buscarDocumento(texto);
 
-if(doc){
-mensajes.innerHTML += "<p><b>Asistente:</b><br>" + doc + "</p>";
-mensajes.scrollTop = mensajes.scrollHeight;
-return;
-}
-// SI NO ENCUENTRA → IA
-let respuestaIA = await preguntarIA(texto);
-
-mensajes.innerHTML += "<p><b>Asistente:</b><br>" + respuestaIA + "</p>";
-
-mensajes.scrollTop = mensajes.scrollHeight;
-
-}
 
 // ===============================
 // SALUDO
@@ -945,9 +930,7 @@ Puedes buscar documentos por categoría escribiendo:<br><br>
 📂 leyes<br>
 📂 pacto<br>
 📂 protocolos<br>
-📂 reglamentos<br><br>
-
-O escribe el nombre del documento que deseas buscar.
+📂 reglamentos
 </p>
 `;
 
@@ -958,7 +941,7 @@ return;
 
 
 // ===============================
-// MOSTRAR SECCIONES
+// MOSTRAR CATEGORIAS
 // ===============================
 
 if(texto.includes("acciones")){
@@ -1011,6 +994,7 @@ mensajes.innerHTML += listarCategoria("reglamentos","REGLAMENTOS");
 return;
 }
 
+
 // ===============================
 // BUSCAR DOCUMENTO
 // ===============================
@@ -1025,33 +1009,18 @@ return;
 
 
 // ===============================
-// RESPUESTA POR DEFECTO
+// IA SI NO ENCUENTRA
 // ===============================
 
-mensajes.innerHTML += `
-<p><b>Asistente:</b><br>
-No encontré ese documento.<br><br>
+let respuestaIA = await preguntarIA(texto);
 
-Puedes buscar por categorías como:<br><br>
-
-📂 acciones<br>
-📂 actas entrega<br>
-📂 posesion<br>
-📂 acuerdos<br>
-📂 entregas<br>
-📂 formatos<br>
-📂 leyes<br>
-📂 pacto<br>
-📂 protocolos<br>
-📂 reglamentos<br><br>
-
-O escribe el nombre del documento que deseas buscar.
-</p>
-`;
+mensajes.innerHTML += "<p><b>Asistente:</b><br>" + respuestaIA + "</p>";
 
 mensajes.scrollTop = mensajes.scrollHeight;
+
 }
- 
+
+
 // ===============================
 // ENTER PARA ENVIAR
 // ===============================
@@ -1064,4 +1033,5 @@ responder();
 }
 
 });
+
 </script>
