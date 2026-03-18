@@ -676,14 +676,17 @@ chat.style.display = "none";
 
 async function preguntarIA(texto){
 
+try{
+
 let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
 method:"POST",
 headers:{
 "Content-Type":"application/json",
-"Authorization":"Bearer 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",
+"Authorization":"Bearer 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",
 },
 body: JSON.stringify({
-model:"openai/gpt-3.5-turbo",
+model:"openai/gpt-4o-mini",
+max_tokens:120,
 messages:[
 {
 role:"user",
@@ -697,7 +700,14 @@ let data = await respuesta.json();
 
 return data.choices[0].message.content;
 
+}catch(error){
+
+return "Lo siento, no pude conectar con la IA.";
+
 }
+
+}
+  
 const documentos = [
  
 
