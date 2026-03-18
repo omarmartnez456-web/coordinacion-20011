@@ -577,8 +577,6 @@ console.log("chat cargado");
 // ABRIR Y CERRAR CHAT
 function toggleChat(){
 
-console.log("boton presionado");
-
 let chat = document.getElementById("chatbot");
 
 if(chat.style.display === "none" || chat.style.display === ""){
@@ -588,7 +586,34 @@ chat.style.display = "none";
 }
 
 }
+// ===============================
+// FUNCION IA
+// ===============================
 
+async function preguntarIA(texto){
+
+let respuesta = await fetch("https://openrouter.ai/api/v1/chat/completions",{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"Authorization":"Bearer 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",
+},
+body: JSON.stringify({
+model:"openai/gpt-3.5-turbo",
+messages:[
+{
+role:"user",
+content:texto
+}
+]
+})
+});
+
+let data = await respuesta.json();
+
+return data.choices[0].message.content;
+
+}
 const documentos = [
  
 
@@ -877,7 +902,21 @@ mensajes.innerHTML += "<p><b>Tú:</b> " + input + "</p>";
 document.getElementById("userInput").value = "";
 
 let texto = input.toLowerCase();
+  let doc = buscarDocumento(texto);
 
+if(doc){
+mensajes.innerHTML += "<p><b>Asistente:</b><br>" + doc + "</p>";
+mensajes.scrollTop = mensajes.scrollHeight;
+return;
+}
+// SI NO ENCUENTRA → IA
+let respuestaIA = await preguntarIA(texto);
+
+mensajes.innerHTML += "<p><b>Asistente:</b><br>" + respuestaIA + "</p>";
+
+mensajes.scrollTop = mensajes.scrollHeight;
+
+}
 
 // ===============================
 // SALUDO
