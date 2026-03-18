@@ -689,6 +689,10 @@ model:"openai/gpt-4o-mini",
 max_tokens:120,
 messages:[
 {
+role:"system",
+content:"Eres un asistente virtual que ayuda a docentes y personal administrativo."
+},
+{
 role:"user",
 content:texto
 }
@@ -698,9 +702,13 @@ content:texto
 
 let data = await respuesta.json();
 
+console.log(data);
+
 return data.choices[0].message.content;
 
 }catch(error){
+
+console.error(error);
 
 return "Lo siento, no pude conectar con la IA.";
 
