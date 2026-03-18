@@ -1033,12 +1033,12 @@ mensajes.innerHTML += listarCategoria("acciones","ACCIONES DE PERSONAL");
 return;
 }
 
-if(texto.includes("actas entrega")){
+if(texto.includes("actas")){
 mensajes.innerHTML += listarCategoria("actas_entrega","ACTAS DE ENTREGA");
 return;
 }
 
-if(texto.includes("posesion")){
+if(texto.includes("posesion") || texto.includes("posecion") || texto.includes("posesión")){
 mensajes.innerHTML += listarCategoria("actas_posesion","ACTAS DE TOMA DE POSESIÓN");
 return;
 }
@@ -1057,7 +1057,7 @@ if(texto.includes("protocolos")){
 mensajes.innerHTML += listarCategoria("protocolos","PROTOCOLOS");
 return;
 }
-
+  
 if(texto.includes("acuerdos")){
 mensajes.innerHTML += listarCategoria("acuerdos","ACUERDOS MINISTERIALES");
 return;
