@@ -717,7 +717,11 @@ let data = await respuesta.json();
 
 console.log(data);
 
+if(data.choices && data.choices.length > 0){
 return data.choices[0].message.content;
+}else{
+return "No se obtuvo respuesta de la IA.";
+}
 
 }catch(error){
 
