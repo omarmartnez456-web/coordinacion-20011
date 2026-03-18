@@ -235,96 +235,101 @@ margin-top:40px;
 }
 
 
-/* ============================= */
-/* BIENVENIDOS */
-/* ============================= */
-
-#inicio{
-max-width:1200px;
-margin:40px auto;
-padding:20px;
-}
-
-#inicio h2{
-color:#1e3a8a;
-text-align:center;
-margin-bottom:20px;
-}
-
-.card{
-background:white;
-padding:40px;
-border-radius:14px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-line-height:1.8;
-font-size:17px;
-max-width:1100px;
-margin:auto;
-}
-
-.card ul{
-margin-top:15px;
-padding-left:20px;
-}
-
-.card li{
-margin-bottom:10px;
-}
-
-
-/* ============================= */
 /* INFORMACIÓN INSTITUCIONAL */
-/* ============================= */
-
-#nosotros{
-max-width:1300px;
-margin:auto;
-padding:20px;
-}
-
-#nosotros h2{
-text-align:center;
-color:#1e3a8a;
-margin-bottom:30px;
-}
 
 .info-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+margin-top:20px;
 }
 
 .info-card{
 background:white;
-padding:35px;
-border-radius:14px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+padding:25px;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.1);
 transition:0.3s;
-font-size:16px;
-line-height:1.7;
 }
 
 .info-card:hover{
 transform:translateY(-5px);
-box-shadow:0 15px 35px rgba(0,0,0,0.15);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
-
-/* ============================= */
-/* DOCUMENTOS */
-/* ============================= */
-
-#documentos{
-max-width:1400px;
-margin:auto;
-padding:20px;
-}
-
-#documentos h2{
-text-align:center;
+.info-card h3{
 color:#1e3a8a;
-margin-bottom:30px;
+margin-bottom:10px;
+font-size:20px;
 }
+
+.info-card p{
+line-height:1.6;
+color:#333;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Coordinación Distrital 20-011</h1>
+<p>San Jacinto, Chiquimula</p>
+</header>
+
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#documentos">Documentos</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<section id="inicio">
+
+<h2>Bienvenidos</h2>
+
+<div class="card">
+<p>
+Bienvenido al Sistema Digital Inteligente de Gestión Administrativa de la Coordinación Distrital 20-011.
+Esta plataforma facilita el acceso a información oficial, documentos institucionales y asistencia automatizada mediante Inteligencia Artificial.
+</p>
+</div>
+
+</section>
+
+
+<section id="nosotros">
+
+<h2>Información Institucional</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h3>📌 Misión</h3>
+<p>
+Somos una institución evolutiva, organizada, eficiente y eficaz, generadora de oportunidades de enseñanza-aprendizaje, orientada a resultados y que aprovecha el acompañamiento pedagógico y asesoría administrativa permanente bajo la conducción del Coordinador Distrital, en los centros educativos con pertinencia cultural y lingüística que permita desarrollar competencias para la vida en la niñez y juventud guatemalteca.
+</p>
+</div>
+
+<div class="info-card">
+<h3>🎯 Visión</h3>
+<p>
+Contar con centros educativos de calidad con pertinencia cultural y lingüística a través de procesos sistemáticos de acompañamiento pedagógico y administrativo, formando ciudadanos con carácter, capaces de aprender por sí mismos, orgullosos de ser guatemaltecos y comprometidos con su desarrollo integral.
+</p>
+</div>
+
+<div class="info-card">
+<h3>🏫 Objetivo</h3>
+<p>
+Garantizar la adecuada prestación del servicio educativo en la jurisdicción del distrito 20-011, asegurando el cumplimiento de las políticas educativas nacionales, la correcta aplicación de la normativa vigente y el fortalecimiento continuo de los procesos pedagógicos y administrativos.
+</p>
+</div>
+
+</div>
+  
+</section>
 <style>
 
 /* DOCUMENTOS OFICIALES */
@@ -379,7 +384,7 @@ font-size:22px;
 }
 
 @media (max-width:480px){
-}
+
 .docs-grid{
 grid-template-columns:1fr;
 }
@@ -388,60 +393,9 @@ grid-template-columns:1fr;
 padding:12px;
 font-size:14px;
 }
-</style>
-<section id="inicio">
 
-<h2>Bienvenidos</h2>
-
-<div class="card">
-
-<p>
-Bienvenido al <b>Sistema Digital Inteligente de Gestión Administrativa de la Coordinación Distrital 20-011</b>.
-</p>
-
-<p>
-Desde esta plataforma podrás:
-</p>
-
-<ul>
-<li>📂 Consultar documentos institucionales</li>
-<li>📚 Acceder a normativa educativa</li>
-<li>📄 Descargar formatos administrativos</li>
-<li>🤖 Recibir asistencia automática mediante Inteligencia Artificial</li>
-</ul>
-
-</div>
-
-</section>
 }
-  <section id="nosotros">
-
-<h2>Información Institucional</h2>
-
-<div class="info-grid">
-
-<div class="info-card">
-<h3>📌 Misión</h3>
-<p>
-Somos una institución evolutiva, organizada, eficiente y eficaz, generadora de oportunidades de enseñanza-aprendizaje, orientada a resultados y que aprovecha el acompañamiento pedagógico y asesoría administrativa permanente bajo la conducción del Coordinador Distrital, en los centros educativos con pertinencia cultural y lingüística que permita desarrollar competencias para la vida en la niñez y juventud guatemalteca.
-</p>
-</div>
-
-<div class="info-card">
-<h3>🎯 Visión</h3>
-<p>
-Contar con centros educativos de calidad con pertinencia cultural y lingüística a través de procesos sistemáticos de acompañamiento pedagógico y administrativo, formando ciudadanos con carácter, capaces de aprender por sí mismos, orgullosos de ser guatemaltecos y comprometidos con su desarrollo integral.
-</p>
-</div>
-
-<div class="info-card">
-<h3>🏫 Objetivo</h3>
-<p>
-Garantizar la adecuada prestación del servicio educativo en la jurisdicción del distrito 20-011, asegurando el cumplimiento de las políticas educativas nacionales, la correcta aplicación de la normativa vigente y el fortalecimiento continuo de los procesos pedagógicos y administrativos.
-</p>
-</div>
-
-</div>
+</style>
 
 </section>
 
