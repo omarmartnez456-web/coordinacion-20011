@@ -548,22 +548,106 @@ font-size:14px;
 
 <!-- CHATBOT -->
 
+<style>
+
+.chatbot{
+position:fixed;
+bottom:90px;
+right:20px;
+width:320px;
+height:420px;
+background:white;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+display:none;
+flex-direction:column;
+overflow:hidden;
+}
+
+.chat-header{
+background:#2563eb;
+color:white;
+padding:12px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.close-btn{
+cursor:pointer;
+font-size:18px;
+}
+
+#messages{
+flex:1;
+padding:10px;
+overflow-y:auto;
+font-size:14px;
+}
+
+.chat-input{
+display:flex;
+border-top:1px solid #ddd;
+}
+
+.chat-input input{
+flex:1;
+padding:10px;
+border:none;
+outline:none;
+}
+
+.chat-input button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 15px;
+cursor:pointer;
+}
+
+/* BOTON FLOTANTE */
+
+.chatbot-toggle{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:#2563eb;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+</style>
+
 <div class="chatbot" id="chatbot">
 
-<div class="chat-header">
-Asistente IA
-<span class="close-btn" onclick="toggleChat()">✖</span>
+  <div class="chat-header">
+    <span>Asistente IA</span>
+    <span class="close-btn" onclick="toggleChat()">✖</span>
+  </div>
+
+  <div id="messages"></div>
+
+  <div class="chat-input">
+    <input id="userInput" placeholder="Escribe tu consulta...">
+    <button onclick="responder()">Enviar</button>
+  </div>
+
 </div>
 
-<div id="messages"></div>
+<!-- BOTON PARA ABRIR CHAT -->
 
-<div class="chat-input">
-<input id="userInput" placeholder="Escribe tu consulta...">
-<button onclick="responder()">Enviar</button>
+<div class="chatbot-toggle" onclick="toggleChat()">
+💬
 </div>
-
-</div>
-
 <!-- BOTON FLOTANTE -->
 
 <div class="chatbot-toggle" onclick="toggleChat()">
