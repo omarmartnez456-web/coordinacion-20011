@@ -637,7 +637,7 @@ box-shadow:0 10px 30px rgba(0,0,0,0.15);
 text-align:center;
 transition:0.3s;
 position:relative;
-overflow:hidden;
+overflow:visible;   
 }
 
 .autor-card.pro:hover{
@@ -670,6 +670,69 @@ width:100%;
 height:5px;
 background:linear-gradient(90deg,#2563eb,#60a5fa);
 }
+  /* HOVER suave en la tarjeta */
+.foto-autor{
+transition: transform .25s ease, box-shadow .25s ease;
+cursor: zoom-in;
+}
+.foto-autor:hover{
+transform: scale(1.12);
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* MODAL PRO */
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.85);
+justify-content:center;
+align-items:center;
+z-index:1000;
+backdrop-filter: blur(4px);
+animation: fadeIn .25s ease;
+}
+
+.modal img{
+max-width:92%;
+max-height:85%;
+border-radius:14px;
+box-shadow:0 15px 40px rgba(0,0,0,0.5);
+transform: scale(.85);
+transition: transform .25s ease;
+}
+
+/* estado activo (para animación) */
+.modal.activo img{
+transform: scale(1);
+}
+
+/* botón cerrar */
+.modal .cerrar{
+position:absolute;
+top:20px;
+right:25px;
+font-size:28px;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* pequeño texto ayuda */
+.modal .hint{
+position:absolute;
+bottom:18px;
+color:#ddd;
+font-size:13px;
+opacity:.8;
+}
+
+/* animación */
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+  
   </style>
 <section id="autores">
 
@@ -678,19 +741,67 @@ background:linear-gradient(90deg,#2563eb,#60a5fa);
 <div class="autores-container">
 
 <div class="autor-card pro">
-<img src="Franklin.jpg" class="foto-autor">
+<img src="Franklin.jpg" class="foto-autor" onclick="abrirModal(this)">
 <h3>Franklin Omar Martínez Pérez</h3>
 <p>Desarrollador del sistema</p>
 </div>
 
 <div class="autor-card pro">
-<img src="Anlly2.jpg" class="foto-autor">
+<img src="Anlly2.jpg" class="foto-autor" onclick="abrirModal(this)">
 <h3>Annlly Miriam Janeth Cruz Díaz</h3>
 <p>Colaboradora del proyecto</p>
 </div>
-
+<div id="modal" class="modal" onclick="cerrarModal(event)">
+  <span class="cerrar">&times;</span>
+  <img id="imgGrande">
+  <div class="hint">Doble toque / rueda para zoom · Click fuera para cerrar</div>
 </div>
+<script>
+let escala = 1;
 
+function abrirModal(img){
+const modal = document.getElementById("modal");
+const imgGrande = document.getElementById("imgGrande");
+
+modal.style.display = "flex";
+setTimeout(()=> modal.classList.add("activo"), 10);
+
+imgGrande.src = img.src;
+escala = 1;
+imgGrande.style.transform = "scale(1)";
+}
+
+// cerrar si haces click fuera de la imagen
+function cerrarModal(e){
+if(e.target.id === "modal" || e.target.classList.contains("cerrar")){
+const modal = document.getElementById("modal");
+modal.classList.remove("activo");
+setTimeout(()=> modal.style.display="none", 200);
+}
+}
+
+// ZOOM con rueda (PC)
+document.addEventListener("wheel", function(e){
+const modal = document.getElementById("modal");
+if(modal.style.display === "flex"){
+e.preventDefault();
+escala += e.deltaY * -0.001;
+escala = Math.min(Math.max(.8, escala), 3);
+document.getElementById("imgGrande").style.transform = "scale("+escala+")";
+}
+}, { passive:false });
+
+// DOBLE TOQUE (celular)
+let ultimoToque = 0;
+document.addEventListener("touchend", function(e){
+const ahora = new Date().getTime();
+if(ahora - ultimoToque < 300){
+escala = escala === 1 ? 2 : 1;
+document.getElementById("imgGrande").style.transform = "scale("+escala+")";
+}
+ultimoToque = ahora;
+});
+</script>
 </section>
 
 <footer>
